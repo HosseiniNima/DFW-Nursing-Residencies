@@ -1,0 +1,51 @@
+# DFW Nursing Residency Watch — settings
+#
+# HOME LOCATION
+# Set it here, or (recommended if this repo is public) as GitHub repository
+# variables: Settings → Secrets and variables → Actions → Variables
+#   HOME_ZIP   e.g. 75024          (looked up automatically)
+#   HOME_LAT / HOME_LON            (exact coordinates, override the ZIP)
+# Environment variables always win over the values below.
+home:
+  zip: ""
+  lat: null
+  lon: null
+
+# Cohorts that START in this month or later are what you're looking for.
+# (Format YYYY-MM.) Leave target_until empty for "any time after".
+target_from: "2027-08"
+target_until: ""
+
+# Closer hospitals are checked more often and ranked higher.
+# A hospital lands in the first tier whose max_miles it fits under.
+# The GitHub Action runs every 3 hours, so 3 is the fastest useful interval.
+priority_tiers:
+  - name: Near home
+    max_miles: 15
+    check_every_hours: 3
+  - name: Commutable
+    max_miles: 30
+    check_every_hours: 12
+  - name: Rest of DFW
+    max_miles: 9999
+    check_every_hours: 24
+
+# Hospital ids (from hospitals.yaml) to always treat as top tier,
+# no matter how far away they are.
+favorites: []
+
+alerts:
+  # Open a GitHub issue (which emails you) for these alert levels.
+  #   high   = a cohort starting on/after target_from was posted or opened
+  #   medium = a new residency posting with an unclear or borderline start date
+  issue_levels: [high, medium]
+
+fetch:
+  timeout_seconds: 30
+  # Seconds to wait between two requests to the same website.
+  per_host_delay_seconds: 3
+  # Use a headless browser when a page looks empty/blocked (needs Playwright).
+  browser_fallback: true
+
+# How long to keep the raw check log.
+keep_check_history_days: 30

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+# Working copy rebuilt from data/residencies.sql on every run
+data/residencies.db
+alerts.md

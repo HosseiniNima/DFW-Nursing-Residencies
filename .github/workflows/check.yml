@@ -1,0 +1,71 @@
+name: Check residencies
+
+on:
+  schedule:
+    # Every 3 hours. Near-home hospitals are checked every run; farther ones
+    # less often (see priority_tiers in config.yaml).
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Check every source now, ignoring the schedule"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: residency-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run checks
+        id: run
+        env:
+          HOME_ZIP: ${{ vars.HOME_ZIP }}
+          HOME_LAT: ${{ vars.HOME_LAT }}
+          HOME_LON: ${{ vars.HOME_LON }}
+        run: |
+          python -m residency_watch run --alerts-out alerts.md ${{ inputs.force && '--force' || '' }}
+
+      - name: Open an issue for new residencies
+        if: steps.run.outputs.has_alerts == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create residency-alert --color D93F0B --description "New nurse residency activity" 2>/dev/null || true
+          title="$(head -n 1 alerts.md)"
+          tail -n +2 alerts.md > alerts-body.md
+          gh issue create --title "$title" --body-file alerts-body.md --label residency-alert
+
+      - name: Save database and report
+        if: always()
+        run: |
+          git config user.name "residency-watch[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/residencies.sql REPORT.md
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Residency check $(TZ=America/Chicago date '+%Y-%m-%d %H:%M %Z')"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi

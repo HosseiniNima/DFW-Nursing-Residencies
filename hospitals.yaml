@@ -1,0 +1,216 @@
+# DFW hospitals and the web pages that get checked for nurse residencies.
+#
+# Each health system lists:
+#   sources:   pages to check. One career site usually covers every hospital
+#              in the system, so sources live at the system level.
+#                kind: page  → a program info page; looks for cohort dates and
+#                              "applications open" wording, and notices changes
+#                kind: jobs  → a job board / search results; picks out
+#                              residency / new-grad job postings
+#                render: auto (default) | always | never
+#                              "always" loads the page in a headless browser
+#                              (for sites that build the page with JavaScript)
+#                verified: false marks URL patterns that couldn't be confirmed
+#                              when this list was written. The report's
+#                              "Source health" table shows if they work.
+#   aliases:   names job aggregators use for this system
+#   hospitals: lat/lon are approximate (fine for distance ranking).
+#              match: words that tie a job posting to this campus (defaults to
+#              the city).
+#
+# Sources under the "aggregators" system are matched against every hospital.
+
+systems:
+  - id: thr
+    name: Texas Health Resources
+    aliases: [Texas Health, THR]
+    sources:
+      - id: thr-graduate-nurse
+        kind: jobs
+        url: https://jobs.texashealth.org/professions/graduateNurse
+      - id: thr-search-residency
+        kind: jobs
+        url: https://jobs.texashealth.org/search-jobs/graduate%20nurse%20residency
+        verified: false
+    hospitals:
+      - {id: thr-dallas, name: Texas Health Presbyterian Hospital Dallas, city: Dallas, lat: 32.8810, lon: -96.7630, match: [Presbyterian Dallas, Dallas]}
+      - {id: thr-fort-worth, name: Texas Health Harris Methodist Hospital Fort Worth, city: Fort Worth, lat: 32.7335, lon: -97.3410, match: [Harris Methodist Fort Worth, Fort Worth]}
+      - {id: thr-arlington, name: Texas Health Arlington Memorial Hospital, city: Arlington, lat: 32.7470, lon: -97.1170}
+      - {id: thr-plano, name: Texas Health Presbyterian Hospital Plano, city: Plano, lat: 33.0440, lon: -96.8370}
+      - {id: thr-frisco, name: Texas Health Hospital Frisco, city: Frisco, lat: 33.1070, lon: -96.8270}
+      - {id: thr-allen, name: Texas Health Presbyterian Hospital Allen, city: Allen, lat: 33.1170, lon: -96.6650}
+      - {id: thr-denton, name: Texas Health Presbyterian Hospital Denton, city: Denton, lat: 33.2420, lon: -97.1650}
+      - {id: thr-heb, name: Texas Health Harris Methodist Hospital Hurst-Euless-Bedford, city: Bedford, lat: 32.8440, lon: -97.1440, match: [Hurst-Euless-Bedford, HEB, Bedford]}
+      - {id: thr-southwest, name: Texas Health Harris Methodist Hospital Southwest Fort Worth, city: Fort Worth, lat: 32.6630, lon: -97.4130, match: [Southwest Fort Worth]}
+      - {id: thr-alliance, name: Texas Health Harris Methodist Hospital Alliance, city: Fort Worth, lat: 32.9760, lon: -97.3110, match: [Alliance]}
+      - {id: thr-flower-mound, name: Texas Health Presbyterian Hospital Flower Mound, city: Flower Mound, lat: 33.0340, lon: -97.0750}
+      - {id: thr-rockwall, name: Texas Health Presbyterian Hospital Rockwall, city: Rockwall, lat: 32.9010, lon: -96.4560}
+      - {id: thr-mansfield, name: Texas Health Hospital Mansfield, city: Mansfield, lat: 32.5880, lon: -97.0920}
+      - {id: thr-kaufman, name: Texas Health Presbyterian Hospital Kaufman, city: Kaufman, lat: 32.5830, lon: -96.3140}
+      - {id: thr-cleburne, name: Texas Health Harris Methodist Hospital Cleburne, city: Cleburne, lat: 32.3540, lon: -97.4020}
+      - {id: thr-azle, name: Texas Health Harris Methodist Hospital Azle, city: Azle, lat: 32.8930, lon: -97.5430}
+
+  - id: bsw
+    name: Baylor Scott & White Health
+    aliases: [Baylor Scott, Baylor, BSW]
+    sources:
+      - id: bsw-students-graduates
+        kind: page
+        url: https://jobs.bswhealth.com/us/en/students-graduates
+      - id: bsw-search-residency
+        kind: jobs
+        url: https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency
+        verified: false
+    hospitals:
+      - {id: bsw-dallas, name: Baylor University Medical Center (Dallas), city: Dallas, lat: 32.7880, lon: -96.7810, match: [Baylor University Medical Center, BUMC, Dallas]}
+      - {id: bsw-all-saints, name: Baylor Scott & White All Saints Medical Center, city: Fort Worth, lat: 32.7300, lon: -97.3420, match: [All Saints, Fort Worth]}
+      - {id: bsw-irving, name: Baylor Scott & White Medical Center – Irving, city: Irving, lat: 32.8370, lon: -96.9600}
+      - {id: bsw-grapevine, name: Baylor Scott & White Medical Center – Grapevine, city: Grapevine, lat: 32.9340, lon: -97.0950}
+      - {id: bsw-plano, name: Baylor Scott & White Medical Center – Plano, city: Plano, lat: 33.0300, lon: -96.7700}
+      - {id: bsw-frisco, name: Baylor Scott & White Medical Center – Frisco, city: Frisco, lat: 33.0950, lon: -96.8270}
+      - {id: bsw-centennial, name: Baylor Scott & White Medical Center – Centennial, city: Frisco, lat: 33.1320, lon: -96.8030, match: [Centennial]}
+      - {id: bsw-mckinney, name: Baylor Scott & White Medical Center – McKinney, city: McKinney, lat: 33.2160, lon: -96.6800}
+      - {id: bsw-carrollton, name: Baylor Scott & White Medical Center – Carrollton, city: Carrollton, lat: 33.0040, lon: -96.8880}
+      - {id: bsw-lake-pointe, name: Baylor Scott & White Medical Center – Lake Pointe, city: Rowlett, lat: 32.9000, lon: -96.5650, match: [Lake Pointe, Rowlett]}
+      - {id: bsw-sunnyvale, name: Baylor Scott & White Medical Center – Sunnyvale, city: Sunnyvale, lat: 32.7960, lon: -96.5610}
+      - {id: bsw-waxahachie, name: Baylor Scott & White Medical Center – Waxahachie, city: Waxahachie, lat: 32.4320, lon: -96.8530}
+      - {id: bsw-trophy-club, name: Baylor Scott & White Medical Center – Trophy Club, city: Trophy Club, lat: 33.0000, lon: -97.1800}
+
+  - id: methodist
+    name: Methodist Health System
+    aliases: [Methodist Health, Methodist]
+    sources:
+      - id: methodist-nurse-residency
+        kind: page
+        url: https://www.methodisthealthsystem.org/careers/nurse-residency
+    hospitals:
+      - {id: methodist-dallas, name: Methodist Dallas Medical Center, city: Dallas, lat: 32.7590, lon: -96.8250, match: [Methodist Dallas, Dallas]}
+      - {id: methodist-charlton, name: Methodist Charlton Medical Center, city: Dallas, lat: 32.6480, lon: -96.8820, match: [Charlton]}
+      - {id: methodist-richardson, name: Methodist Richardson Medical Center, city: Richardson, lat: 32.9870, lon: -96.6650}
+      - {id: methodist-mansfield, name: Methodist Mansfield Medical Center, city: Mansfield, lat: 32.5670, lon: -97.1030}
+      - {id: methodist-celina, name: Methodist Celina Medical Center, city: Celina, lat: 33.3000, lon: -96.7800}
+      - {id: methodist-midlothian, name: Methodist Midlothian Medical Center, city: Midlothian, lat: 32.4800, lon: -97.0000}
+      - {id: methodist-southlake, name: Methodist Southlake Medical Center, city: Southlake, lat: 32.9400, lon: -97.1300}
+      - {id: methodist-mckinney, name: Methodist McKinney Hospital, city: McKinney, lat: 33.1700, lon: -96.6500}
+
+  - id: medical-city
+    name: Medical City Healthcare (HCA)
+    aliases: [Medical City, HCA]
+    sources:
+      - id: hca-search-new-grad
+        kind: jobs
+        url: https://careers.hcahealthcare.com/search/jobs/in/texas?q=new+grad+residency
+        render: always
+        verified: false
+    hospitals:
+      - {id: mc-dallas, name: Medical City Dallas, city: Dallas, lat: 32.9100, lon: -96.7720, match: [Medical City Dallas, Dallas]}
+      - {id: mc-plano, name: Medical City Plano, city: Plano, lat: 33.0180, lon: -96.7650}
+      - {id: mc-frisco, name: Medical City Frisco, city: Frisco, lat: 33.1530, lon: -96.8360}
+      - {id: mc-mckinney, name: Medical City McKinney, city: McKinney, lat: 33.1600, lon: -96.6400}
+      - {id: mc-denton, name: Medical City Denton, city: Denton, lat: 33.1830, lon: -97.1000}
+      - {id: mc-lewisville, name: Medical City Lewisville, city: Lewisville, lat: 33.0460, lon: -97.0040}
+      - {id: mc-las-colinas, name: Medical City Las Colinas, city: Irving, lat: 32.8900, lon: -96.9590, match: [Las Colinas, Irving]}
+      - {id: mc-fort-worth, name: Medical City Fort Worth, city: Fort Worth, lat: 32.7330, lon: -97.3440, match: [Medical City Fort Worth, Fort Worth]}
+      - {id: mc-arlington, name: Medical City Arlington, city: Arlington, lat: 32.6970, lon: -97.1200}
+      - {id: mc-north-hills, name: Medical City North Hills, city: North Richland Hills, lat: 32.8320, lon: -97.2200, match: [North Hills, North Richland Hills]}
+      - {id: mc-alliance, name: Medical City Alliance, city: Fort Worth, lat: 32.8960, lon: -97.3110, match: [Alliance]}
+      - {id: mc-weatherford, name: Medical City Weatherford, city: Weatherford, lat: 32.7600, lon: -97.7900}
+      - {id: mc-decatur, name: Medical City Decatur, city: Decatur, lat: 33.2300, lon: -97.5800}
+
+  - id: parkland
+    name: Parkland Health
+    aliases: [Parkland]
+    sources:
+      - id: parkland-residency-eligibility
+        kind: page
+        url: https://www.parklandhealth.org/eligibility-requirements
+      - id: parkland-careers
+        kind: jobs
+        url: https://www.parklandcareers.com/
+        render: always
+        verified: false
+    hospitals:
+      - {id: parkland, name: Parkland Memorial Hospital, city: Dallas, lat: 32.8120, lon: -96.8380}
+
+  - id: utsw
+    name: UT Southwestern Medical Center
+    aliases: [UT Southwestern, UTSW]
+    sources:
+      - id: utsw-nursing-residency
+        kind: jobs
+        url: https://jobs.utsouthwestern.edu/nursing-residency/
+    hospitals:
+      - {id: utsw-clements, name: UT Southwestern William P. Clements Jr. University Hospital, city: Dallas, lat: 32.8170, lon: -96.8430}
+
+  - id: childrens
+    name: Children's Health
+    aliases: [Children's Health, Children's Medical Center]
+    sources:
+      - id: childrens-nurse-residency
+        kind: page
+        url: https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency
+    hospitals:
+      - {id: childrens-dallas, name: Children's Medical Center Dallas, city: Dallas, lat: 32.8090, lon: -96.8370}
+      - {id: childrens-plano, name: Children's Medical Center Plano, city: Plano, lat: 33.0870, lon: -96.8030}
+
+  - id: cook
+    name: Cook Children's
+    aliases: [Cook Children]
+    sources:
+      - id: cook-nurse-residency
+        kind: page
+        url: https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program
+    hospitals:
+      - {id: cook-fort-worth, name: Cook Children's Medical Center, city: Fort Worth, lat: 32.7380, lon: -97.3430}
+      - {id: cook-prosper, name: Cook Children's Medical Center – Prosper, city: Prosper, lat: 33.2400, lon: -96.7900}
+
+  - id: jps
+    name: JPS Health Network
+    aliases: [JPS, John Peter Smith]
+    sources:
+      - id: jps-nurse-residency
+        kind: page
+        url: https://jpshealthnet.org/node/1188
+      - id: jps-nurse-residency-application
+        kind: page
+        url: https://jpshealthnet.org/node/1241
+    hospitals:
+      - {id: jps, name: John Peter Smith Hospital, city: Fort Worth, lat: 32.7270, lon: -97.3270}
+
+  - id: va
+    name: VA North Texas Health Care System
+    aliases: [VA North Texas, Veterans Affairs]
+    sources:
+      - id: va-pbrnr
+        kind: page
+        url: https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/
+      - id: usajobs-nurse-residency-dallas
+        kind: jobs
+        url: https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas
+        render: always
+        verified: false
+    hospitals:
+      - {id: va-dallas, name: Dallas VA Medical Center, city: Dallas, lat: 32.6960, lon: -96.8000}
+
+  - id: adventhealth
+    name: AdventHealth
+    aliases: [AdventHealth, Huguley]
+    sources:
+      - id: adventhealth-nurse-residency
+        kind: page
+        url: https://careers.adventhealth.com/nurseresidency
+      - id: adventhealth-search-texas
+        kind: jobs
+        url: https://jobs.adventhealth.com/search-jobs/nurse%20residency/Texas
+        verified: false
+    hospitals:
+      - {id: adventhealth-burleson, name: AdventHealth (Texas Health Huguley), city: Burleson, lat: 32.5950, lon: -97.3110, match: [Huguley, Burleson, Heritage]}
+
+  - id: aggregators
+    name: Job aggregators (all DFW)
+    sources:
+      - id: dejobs-dfw-residency
+        kind: jobs
+        url: https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX
+        verified: false
+    hospitals: []
