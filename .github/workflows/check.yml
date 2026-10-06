@@ -22,6 +22,7 @@ concurrency:
 
 jobs:
   check:
+    name: Check hospital websites
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
