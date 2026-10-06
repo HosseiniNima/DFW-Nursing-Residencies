@@ -56,6 +56,12 @@ def match_hospital(text: str, src: Source, settings: Settings, strict: bool = Fa
     return None
 
 
+def _url_words(url: str) -> str:
+    """Job URLs often carry the campus city ("...-mother-baby-rockwall-tx/")."""
+    path = url.split("?", 1)[0].split("://", 1)[-1].split("/", 1)[-1] if url else ""
+    return re.sub(r"[-_/+%]+", " ", path)
+
+
 def _level_for_new(relevance: str, kind: str, baseline: bool) -> str | None:
     if relevance == "target":
         return "high"
@@ -116,7 +122,8 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
     else:
         page = extract.analyze(res.html, res.final_url or src.url, src.kind, now_idx)
     if src.dfw_only or not src.hospitals:
-        page.items = [i for i in page.items if match_hospital(f"{i.title} {i.context}", src, settings, strict=True)]
+        page.items = [i for i in page.items
+                      if match_hospital(f"{i.title} {i.context} {_url_words(i.url)}", src, settings, strict=True)]
     baseline = not row["baseline_done"]
     if (row["consecutive_failures"] or 0) >= 3:
         event("source_recovered", "low", f"{src.system_name}: {src.url} is working again")
@@ -125,7 +132,7 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
     for item in page.items:
         relevance = extract.classify(item.cohorts, settings.target_from, settings.target_until)
         cohort = ", ".join(c.label for c in item.cohorts)
-        hospital = match_hospital(f"{item.title} {item.context}", src, settings)
+        hospital = match_hospital(f"{item.title} {item.context} {_url_words(item.url)}", src, settings)
         fid = f"{src.id}:{item.key}"
         seen_ids.add(fid)
         old = conn.execute("SELECT * FROM findings WHERE id = ?", (fid,)).fetchone()

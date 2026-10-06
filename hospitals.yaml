@@ -62,7 +62,6 @@ systems:
         kind: jobs
         url: https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency
         render: always
-        verified: false
     hospitals:
       - {id: bsw-dallas, name: Baylor University Medical Center (Dallas), city: Dallas, lat: 32.7880, lon: -96.7810, match: [Baylor University Medical Center, BUMC, Dallas]}
       - {id: bsw-all-saints, name: Baylor Scott & White All Saints Medical Center, city: Fort Worth, lat: 32.7300, lon: -97.3420, match: [All Saints, Fort Worth]}
@@ -127,7 +126,6 @@ systems:
       - id: parkland-bridge-program
         kind: page
         url: https://www.parklandhealth.org/the-bridge-nurse-residency-program
-        verified: false
       - id: parkland-workday
         kind: workday
         url: https://wd12.myworkdaysite.com/en-US/recruiting/parklandhospital/Parkland_Careers
@@ -191,7 +189,6 @@ systems:
         kind: jobs
         url: https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas
         render: always
-        verified: false
     hospitals:
       - {id: va-dallas, name: Dallas VA Medical Center, city: Dallas, lat: 32.6960, lon: -96.8000}
 

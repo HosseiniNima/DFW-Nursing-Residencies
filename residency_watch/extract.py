@@ -258,7 +258,7 @@ def _snippets(text: str, base_url: str, now_idx: int) -> list[Item]:
             snippet = part[:300]
             if len(part) < 40 and i > 0 and len(lines[i - 1]) < 120:
                 # A bare date under a heading ("Cohort start date" / "February 8, 2027")
-                snippet = f"{lines[i - 1]}: {part}"
+                snippet = f"{lines[i - 1].rstrip(':')}: {part}"
             item = Item("snippet", snippet, base_url, around[:500], cohorts, signal_of(around))
             items.setdefault(item.key, item)
     return list(items.values())
