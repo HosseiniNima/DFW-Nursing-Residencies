@@ -39,11 +39,13 @@ class Hospital:
 class Source:
     id: str
     url: str
-    kind: str  # "page" | "jobs"
+    kind: str  # "page" | "jobs" | "workday"
     system_id: str
     system_name: str
     render: str = "auto"  # "auto" | "always" | "never"
     verified: bool = True
+    search: list[str] = field(default_factory=list)  # workday search terms
+    dfw_only: bool = False  # drop postings that don't name a DFW hospital or city
     hospitals: list[Hospital] = field(default_factory=list)  # empty => aggregator
     tier: Tier | None = None
     distance_mi: float | None = None  # closest hospital this source covers
@@ -162,6 +164,8 @@ def load(config_path: Path | None = None, hospitals_path: Path | None = None) ->
                     id=src["id"], url=src["url"], kind=src.get("kind", "page"),
                     system_id=s["id"], system_name=s["name"],
                     render=src.get("render", "auto"), verified=src.get("verified", True),
+                    search=list(src.get("search") or ["nurse residency", "new grad"]),
+                    dfw_only=bool(src.get("dfw_only", False)),
                     hospitals=hospitals,
                 )
             )

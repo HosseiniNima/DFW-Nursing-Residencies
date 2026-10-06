@@ -20,8 +20,8 @@ def main(argv: list[str] | None = None) -> int:
     run.add_argument("--alerts-out", type=Path, help="write a GitHub issue title/body here if there are new alerts")
 
     sub.add_parser("report", help="rebuild REPORT.md without checking anything")
-    probe = sub.add_parser("probe", help="fetch URLs and show what would be found (for fixing hospitals.yaml)")
-    probe.add_argument("urls", nargs="+")
+    probe = sub.add_parser("probe", help="fetch URLs or source ids and show what would be found (for fixing hospitals.yaml)")
+    probe.add_argument("urls", nargs="+", help="URLs, or source ids from hospitals.yaml")
     probe.add_argument("--kind", default="jobs", choices=["jobs", "page"])
     sub.add_parser("hospitals", help="list hospitals by distance and check frequency")
 
@@ -62,21 +62,34 @@ def _probe(settings: config.Settings, urls: list[str], kind: str) -> int:
 
     from bs4 import BeautifulSoup
 
-    from . import extract
+    from . import extract, workday
     from .checker import utcnow
     from .fetch import Fetcher
 
     now = utcnow()
+    now_idx = now.year * 12 + now.month - 1
+    sources = {s.id: s for s in settings.sources}
     fetcher = Fetcher(settings.timeout, 1, settings.browser_fallback)
     try:
-        for url in urls:
-            res = fetcher.get(url, "auto", visible_text_len=lambda html: len(extract.visible_text(html)))
-            print(f"\n=== {url}\n  status={res.status} via={res.via} error={res.error}\n  final={res.final_url}")
+        for target in urls:
+            src = sources.get(target)
+            url, src_kind = (src.url, src.kind) if src else (target, "workday" if workday.is_workday(target) else kind)
+            if src_kind == "workday":
+                res, items = workday.search(fetcher, url, src.search if src else ["nurse residency"], now_idx)
+            else:
+                res = fetcher.get(url, src.render if src else "auto", visible_text_len=lambda html: len(extract.visible_text(html)))
+            print(f"\n=== {target}\n  status={res.status} via={res.via} error={res.error}\n  final={res.final_url}")
             if not res.ok:
+                continue
+            if src_kind == "workday":
+                total = (res.json or {}).get("total")
+                print(f"  workday total={total} residency_items={len(items)}")
+                for item in items[:25]:
+                    print(f"  - {item.context[:160]} | {item.url[:150]}")
                 continue
             soup = BeautifulSoup(res.html, "html.parser")
             title = soup.title.get_text(strip=True) if soup.title else ""
-            page = extract.analyze(res.html, res.final_url, kind, now.year * 12 + now.month - 1)
+            page = extract.analyze(res.html, res.final_url, src_kind, now_idx)
             print(f"  title={title!r} text_len={len(page.text)} items={len(page.items)} signal={page.page_signal!r}")
             for item in page.items[:25]:
                 cohort = ", ".join(c.label for c in item.cohorts)

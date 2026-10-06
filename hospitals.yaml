@@ -7,6 +7,10 @@
 #                              "applications open" wording, and notices changes
 #                kind: jobs  → a job board / search results; picks out
 #                              residency / new-grad job postings
+#                kind: workday → a Workday career site; searched through its API
+#                              using the `search` terms
+#                dfw_only: true drops postings that don't name a DFW campus or
+#                              city (for statewide/national job boards)
 #                render: auto (default) | always | never
 #                              "always" loads the page in a headless browser
 #                              (for sites that build the page with JavaScript)
@@ -25,13 +29,10 @@ systems:
     name: Texas Health Resources
     aliases: [Texas Health, THR]
     sources:
-      - id: thr-graduate-nurse
+      - id: thr-gn-residency-search
         kind: jobs
-        url: https://jobs.texashealth.org/professions/graduateNurse
-      - id: thr-search-residency
-        kind: jobs
-        url: https://jobs.texashealth.org/search-jobs/graduate%20nurse%20residency
-        verified: false
+        url: https://jobs.texashealth.org/listjobs/?keyword=(GN%20OR%20%22Graduate%20Nurse%22)%20AND%20Residency&category=RN%2FRegistered%20Nurse
+        render: always
     hospitals:
       - {id: thr-dallas, name: Texas Health Presbyterian Hospital Dallas, city: Dallas, lat: 32.8810, lon: -96.7630, match: [Presbyterian Dallas, Dallas]}
       - {id: thr-fort-worth, name: Texas Health Harris Methodist Hospital Fort Worth, city: Fort Worth, lat: 32.7335, lon: -97.3410, match: [Harris Methodist Fort Worth, Fort Worth]}
@@ -60,6 +61,7 @@ systems:
       - id: bsw-search-residency
         kind: jobs
         url: https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency
+        render: always
         verified: false
     hospitals:
       - {id: bsw-dallas, name: Baylor University Medical Center (Dallas), city: Dallas, lat: 32.7880, lon: -96.7810, match: [Baylor University Medical Center, BUMC, Dallas]}
@@ -97,11 +99,15 @@ systems:
     name: Medical City Healthcare (HCA)
     aliases: [Medical City, HCA]
     sources:
-      - id: hca-search-new-grad
+      # HCA's own careers site blocks automated visits; its DirectEmployers mirror doesn't.
+      - id: hca-dejobs-residency
         kind: jobs
-        url: https://careers.hcahealthcare.com/search/jobs/in/texas?q=new+grad+residency
-        render: always
-        verified: false
+        url: https://hcahealthcare.dejobs.org/jobs/?q=residency&location=Texas&sort=date
+        dfw_only: true
+      - id: hca-dejobs-new-grad
+        kind: jobs
+        url: https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date
+        dfw_only: true
     hospitals:
       - {id: mc-dallas, name: Medical City Dallas, city: Dallas, lat: 32.9100, lon: -96.7720, match: [Medical City Dallas, Dallas]}
       - {id: mc-plano, name: Medical City Plano, city: Plano, lat: 33.0180, lon: -96.7650}
@@ -121,14 +127,14 @@ systems:
     name: Parkland Health
     aliases: [Parkland]
     sources:
-      - id: parkland-residency-eligibility
+      - id: parkland-bridge-program
         kind: page
-        url: https://www.parklandhealth.org/eligibility-requirements
-      - id: parkland-careers
-        kind: jobs
-        url: https://www.parklandcareers.com/
-        render: always
+        url: https://www.parklandhealth.org/the-bridge-nurse-residency-program
         verified: false
+      - id: parkland-workday
+        kind: workday
+        url: https://wd12.myworkdaysite.com/en-US/recruiting/parklandhospital/Parkland_Careers
+        search: [nurse resident, nurse residency, graduate nurse]
     hospitals:
       - {id: parkland, name: Parkland Memorial Hospital, city: Dallas, lat: 32.8120, lon: -96.8380}
 
@@ -137,8 +143,13 @@ systems:
     aliases: [UT Southwestern, UTSW]
     sources:
       - id: utsw-nursing-residency
-        kind: jobs
+        kind: page
         url: https://jobs.utsouthwestern.edu/nursing-residency/
+      - id: utsw-job-search
+        kind: jobs
+        url: https://jobs.utsouthwestern.edu/job-search-results/?keyword=RN%20Residency
+        render: always
+        verified: false
     hospitals:
       - {id: utsw-clements, name: UT Southwestern William P. Clements Jr. University Hospital, city: Dallas, lat: 32.8170, lon: -96.8430}
 
@@ -196,21 +207,24 @@ systems:
     name: AdventHealth
     aliases: [AdventHealth, Huguley]
     sources:
-      - id: adventhealth-nurse-residency
-        kind: page
-        url: https://careers.adventhealth.com/nurseresidency
-      - id: adventhealth-search-texas
-        kind: jobs
-        url: https://jobs.adventhealth.com/search-jobs/nurse%20residency/Texas
-        verified: false
+      - id: adventhealth-workday
+        kind: workday
+        url: https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site
+        search: [nurse residency Burleson, nurse residency Huguley, nurse residency Texas]
+        dfw_only: true
     hospitals:
       - {id: adventhealth-burleson, name: AdventHealth (Texas Health Huguley), city: Burleson, lat: 32.5950, lon: -97.3110, match: [Huguley, Burleson, Heritage]}
 
   - id: aggregators
     name: Job aggregators (all DFW)
     sources:
-      - id: dejobs-dfw-residency
+      - id: dejobs-dallas
         kind: jobs
-        url: https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX
-        verified: false
+        url: https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX&sort=date
+      - id: dejobs-fort-worth
+        kind: jobs
+        url: https://dejobs.org/jobs/?q=nurse+residency&location=Fort+Worth%2C+TX&sort=date
+      - id: dejobs-new-grad-texas
+        kind: jobs
+        url: https://dejobs.org/jobs/?q=new+grad+residency&location=Texas&sort=date
     hospitals: []

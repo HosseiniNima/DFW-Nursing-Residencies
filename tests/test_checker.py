@@ -126,3 +126,17 @@ def test_failing_source(tmp_path, monkeypatch):
     assert row["consecutive_failures"] == 3 and row["last_error"] == "HTTP 404"
     assert conn.execute("SELECT COUNT(*) FROM events WHERE type='source_failing'").fetchone()[0] == 2
     assert "❌" in report.build_report(conn, settings)
+
+
+def test_dfw_only_drops_other_cities(tmp_path, monkeypatch):
+    settings, conn = setup(tmp_path, monkeypatch)
+    src = settings.sources[0]
+    src.dfw_only = True
+    html = """<ul>
+      <li><a href="/a/job/1">New Grad Nurse Residency</a> Fort Worth, TX</li>
+      <li><a href="/b/job/2">New Grad RN Resident PCU</a> El Paso, TX</li>
+      <li><a href="/c/job/3">Nurse Residency - Med Surg</a> Plano, TX</li></ul>"""
+    fetcher = FakeFetcher({src.url: html, "https://far.example.org/residency": "<p>x</p>"})
+    checker.run(conn, settings, fetcher=fetcher, now=datetime(2026, 10, 6, 12, tzinfo=timezone.utc))
+    titles = {r["title"] for r in conn.execute("SELECT title FROM findings WHERE source_id = ?", (src.id,))}
+    assert titles == {"Nurse Residency - Med Surg"}  # Fort Worth isn't a THR campus in this test config

@@ -24,6 +24,7 @@ class FetchResult:
     html: str
     via: str  # "http" | "browser"
     error: str | None = None
+    json: object = None
 
     @property
     def ok(self) -> bool:
@@ -77,6 +78,17 @@ class Fetcher:
                 last_exc = exc
                 time.sleep(2 * (attempt + 1))
         return FetchResult(url, url, None, "", "http", f"{type(last_exc).__name__}: {last_exc}")
+
+    def post_json(self, url: str, payload: dict) -> FetchResult:
+        self._wait_for_host(url)
+        try:
+            r = self.session.post(url, json=payload, timeout=self.timeout,
+                                  headers={"Accept": "application/json", "Content-Type": "application/json"})
+            err = None if r.status_code < 400 else f"HTTP {r.status_code}"
+            data = r.json() if err is None else None
+            return FetchResult(url, r.url, r.status_code, r.text, "api", err, data)
+        except (requests.RequestException, ValueError) as exc:
+            return FetchResult(url, url, None, "", "api", f"{type(exc).__name__}: {exc}"[:300])
 
     def _render(self, url: str) -> FetchResult:
         if self._browser_failed:

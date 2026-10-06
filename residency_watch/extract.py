@@ -255,6 +255,10 @@ def _snippets(text: str, base_url: str, now_idx: int) -> list[Item]:
     return list(items.values())
 
 
+def items_hash(items: list[Item]) -> str:
+    return hashlib.sha1("\n".join(sorted(i.key for i in items)).encode()).hexdigest()[:16]
+
+
 def analyze(html: str, base_url: str, kind: str, now_idx: int) -> PageResult:
     soup = BeautifulSoup(html, "html.parser")
     text = visible_text(html)

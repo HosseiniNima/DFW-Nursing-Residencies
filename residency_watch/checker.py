@@ -6,7 +6,7 @@ import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
 
-from . import extract
+from . import extract, workday
 from .config import Hospital, Settings, Source
 from .fetch import Fetcher
 
@@ -33,8 +33,11 @@ def is_due(src: Source, last_checked: str | None, now: datetime) -> bool:
     return last is None or now - last >= timedelta(hours=src.tier.check_every_hours) - SCHEDULE_SLACK
 
 
-def match_hospital(text: str, src: Source, settings: Settings) -> Hospital | None:
-    """Ties a posting to a campus by name/city words, preferring the closest match."""
+def match_hospital(text: str, src: Source, settings: Settings, strict: bool = False) -> Hospital | None:
+    """Ties a posting to a campus by name/city words, preferring the closest match.
+
+    strict: only accept an explicit name/city match (used to drop postings outside DFW).
+    """
     if src.hospitals:
         candidates = src.hospitals
     else:  # aggregator: only systems whose name appears in the text
@@ -48,7 +51,7 @@ def match_hospital(text: str, src: Source, settings: Settings) -> Hospital | Non
             hits.append((0 if re.search(re.escape(h.name), text, re.I) else 1, h.distance_mi or 0, h))
     if hits:
         return min(hits, key=lambda t: (t[0], t[1]))[2]
-    if not src.hospitals and len({h.system_id for h in candidates}) == 1 and candidates:
+    if not strict and not src.hospitals and len({h.system_id for h in candidates}) == 1 and candidates:
         return min(candidates, key=lambda h: h.distance_mi or 0)
     return None
 
@@ -84,7 +87,10 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
         conn.execute("UPDATE sources SET url = ?, kind = ?, baseline_done = 0, last_hash = NULL WHERE id = ?", (src.url, src.kind, src.id))
         row = conn.execute("SELECT * FROM sources WHERE id = ?", (src.id,)).fetchone()
 
-    res = fetcher.get(src.url, src.render, visible_text_len=lambda html: len(extract.visible_text(html)))
+    if src.kind == "workday":
+        res, wd_items = workday.search(fetcher, src.url, src.search, now_idx)
+    else:
+        res = fetcher.get(src.url, src.render, visible_text_len=lambda html: len(extract.visible_text(html)))
     events: list[tuple] = []
 
     def event(type_, level, message, finding_id=None, url=None):
@@ -105,7 +111,12 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
         conn.executemany("INSERT INTO events (at, source_id, finding_id, type, level, message, url) VALUES (?,?,?,?,?,?,?)", events)
         return {"source": src.id, "ok": False, "error": res.error, "events": len(events)}
 
-    page = extract.analyze(res.html, res.final_url or src.url, src.kind, now_idx)
+    if src.kind == "workday":
+        page = extract.PageResult("", extract.items_hash(wd_items), wd_items, "")
+    else:
+        page = extract.analyze(res.html, res.final_url or src.url, src.kind, now_idx)
+    if src.dfw_only or not src.hospitals:
+        page.items = [i for i in page.items if match_hospital(f"{i.title} {i.context}", src, settings, strict=True)]
     baseline = not row["baseline_done"]
     if (row["consecutive_failures"] or 0) >= 3:
         event("source_recovered", "low", f"{src.system_name}: {src.url} is working again")
@@ -194,6 +205,11 @@ def run(conn: sqlite3.Connection, settings: Settings, force: bool = False, only:
     finally:
         if own_fetcher:
             fetcher.close()
+    # Sources removed from hospitals.yaml: forget them and what they found.
+    configured = [s.id for s in settings.sources]
+    marks = ",".join("?" * len(configured))
+    conn.execute(f"DELETE FROM findings WHERE source_id NOT IN ({marks})", configured)
+    conn.execute(f"DELETE FROM sources WHERE id NOT IN ({marks})", configured)
     cutoff = iso(now - timedelta(days=settings.keep_check_history_days))
     conn.execute("DELETE FROM checks WHERE checked_at < ?", (cutoff,))
     conn.commit()
