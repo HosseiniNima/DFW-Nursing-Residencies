@@ -201,9 +201,15 @@ def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -
     items: dict[str, Item] = {}
     for a in soup.find_all("a", href=True):
         title = _clean(a.get_text(" "))
+        href = a["href"].strip()
+        if not is_residency_title(title) and JOB_HREF_RE.search(href):
+            # Some boards put the job title next to the link rather than in it.
+            holder = a.find_parent(["li", "article", "tr"])
+            holder_text = _clean(holder.get_text(" ")) if holder else ""
+            if holder_text and len(holder_text) < 400 and is_residency_title(holder_text):
+                title = holder_text[:150]
         if not (6 <= len(title) <= 200) or not is_residency_title(title):
             continue
-        href = a["href"].strip()
         if not looks_like_posting(title, href, now_idx):
             continue
         if href.startswith(("javascript:", "mailto:", "tel:")):
@@ -250,6 +256,9 @@ def _snippets(text: str, base_url: str, now_idx: int) -> list[Item]:
             if not CONTEXT_RE.search(part) and not CONTEXT_RE.search(around):
                 continue
             snippet = part[:300]
+            if len(part) < 40 and i > 0 and len(lines[i - 1]) < 120:
+                # A bare date under a heading ("Cohort start date" / "February 8, 2027")
+                snippet = f"{lines[i - 1]}: {part}"
             item = Item("snippet", snippet, base_url, around[:500], cohorts, signal_of(around))
             items.setdefault(item.key, item)
     return list(items.values())

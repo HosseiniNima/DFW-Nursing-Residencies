@@ -75,3 +75,16 @@ def test_menu_links_are_not_postings():
     assert extract.looks_like_posting("Nurse Residency Program - October 2027", "")
     page = extract.analyze((FIX / "jobs_board.html").read_text(), "https://jobs.example.org/search", "jobs", NOW)
     assert "Nurse Residency Program" not in {i.title for i in page.items}
+
+
+def test_short_date_gets_heading():
+    html = "<h3>Cohort start date</h3><p>October 4, 2027</p><h3>Applications open</h3><p>May 10 – May 21, 2027</p>"
+    page = extract.analyze(html, "https://example.org", "page", NOW)
+    titles = [i.title for i in page.items]
+    assert "Cohort start date: October 4, 2027" in titles
+
+
+def test_title_next_to_job_link():
+    html = '<ul><li><h4>Registered Nurse (Nurse Residency Program)</h4><a href="/job/887125900">View</a> Dallas, TX</li></ul>'
+    page = extract.analyze(html, "https://www.usajobs.gov/search", "jobs", NOW)
+    assert page.items and page.items[0].url == "https://www.usajobs.gov/job/887125900"

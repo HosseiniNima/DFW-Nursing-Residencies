@@ -100,10 +100,7 @@ systems:
     aliases: [Medical City, HCA]
     sources:
       # HCA's own careers site blocks automated visits; its DirectEmployers mirror doesn't.
-      - id: hca-dejobs-residency
-        kind: jobs
-        url: https://hcahealthcare.dejobs.org/jobs/?q=residency&location=Texas&sort=date
-        dfw_only: true
+      # (Searching "residency" there returns physician jobs, so this uses "new grad".)
       - id: hca-dejobs-new-grad
         kind: jobs
         url: https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date
@@ -145,11 +142,6 @@ systems:
       - id: utsw-nursing-residency
         kind: page
         url: https://jobs.utsouthwestern.edu/nursing-residency/
-      - id: utsw-job-search
-        kind: jobs
-        url: https://jobs.utsouthwestern.edu/job-search-results/?keyword=RN%20Residency
-        render: always
-        verified: false
     hospitals:
       - {id: utsw-clements, name: UT Southwestern William P. Clements Jr. University Hospital, city: Dallas, lat: 32.8170, lon: -96.8430}
 
