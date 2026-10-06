@@ -7,7 +7,7 @@
 #   HOME_LAT / HOME_LON            (exact coordinates, override the ZIP)
 # Environment variables always win over the values below.
 home:
-  zip: ""
+  zip: "76131"
   lat: null
   lon: null
 
