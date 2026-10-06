@@ -11,6 +11,10 @@ on:
         description: "Check every source now, ignoring the schedule"
         type: boolean
         default: false
+      probe:
+        description: "Debug only: space-separated URLs to test instead of running checks"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -38,7 +42,14 @@ jobs:
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
+      - name: Probe URLs
+        if: inputs.probe != ''
+        env:
+          PROBE_URLS: ${{ inputs.probe }}
+        run: set -f; python -m residency_watch probe $PROBE_URLS
+
       - name: Run checks
+        if: inputs.probe == ''
         id: run
         env:
           HOME_ZIP: ${{ vars.HOME_ZIP }}
@@ -58,7 +69,7 @@ jobs:
           gh issue create --title "$title" --body-file alerts-body.md --label residency-alert
 
       - name: Save database and report
-        if: always()
+        if: always() && inputs.probe == ''
         run: |
           git config user.name "residency-watch[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -20,6 +20,9 @@ def main(argv: list[str] | None = None) -> int:
     run.add_argument("--alerts-out", type=Path, help="write a GitHub issue title/body here if there are new alerts")
 
     sub.add_parser("report", help="rebuild REPORT.md without checking anything")
+    probe = sub.add_parser("probe", help="fetch URLs and show what would be found (for fixing hospitals.yaml)")
+    probe.add_argument("urls", nargs="+")
+    probe.add_argument("--kind", default="jobs", choices=["jobs", "page"])
     sub.add_parser("hospitals", help="list hospitals by distance and check frequency")
 
     args = p.parse_args(argv)
@@ -31,6 +34,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{dist}  {h.tier.name:<12} {h.name}")
         print(f"\nHome: {settings.home_label}")
         return 0
+
+    if args.cmd == "probe":
+        return _probe(settings, args.urls, args.kind)
 
     conn = db.open_db()
     if args.cmd == "run":
@@ -48,6 +54,40 @@ def main(argv: list[str] | None = None) -> int:
                     fh.write(f"has_alerts={'true' if alert else 'false'}\n")
     (config.ROOT / "REPORT.md").write_text(report.build_report(conn, settings))
     db.save_db(conn)
+    return 0
+
+
+def _probe(settings: config.Settings, urls: list[str], kind: str) -> int:
+    import re
+
+    from bs4 import BeautifulSoup
+
+    from . import extract
+    from .checker import utcnow
+    from .fetch import Fetcher
+
+    now = utcnow()
+    fetcher = Fetcher(settings.timeout, 1, settings.browser_fallback)
+    try:
+        for url in urls:
+            res = fetcher.get(url, "auto", visible_text_len=lambda html: len(extract.visible_text(html)))
+            print(f"\n=== {url}\n  status={res.status} via={res.via} error={res.error}\n  final={res.final_url}")
+            if not res.ok:
+                continue
+            soup = BeautifulSoup(res.html, "html.parser")
+            title = soup.title.get_text(strip=True) if soup.title else ""
+            page = extract.analyze(res.html, res.final_url, kind, now.year * 12 + now.month - 1)
+            print(f"  title={title!r} text_len={len(page.text)} items={len(page.items)} signal={page.page_signal!r}")
+            for item in page.items[:25]:
+                cohort = ", ".join(c.label for c in item.cohorts)
+                print(f"  - [{item.kind}] {item.title[:120]} | {cohort} | {item.url[:150]}")
+            links = sorted({a["href"] for a in soup.find_all("a", href=True)
+                            if re.search(r"search|job|career|residen|grad", a["href"], re.I)})
+            print(f"  candidate links ({len(links)}):")
+            for href in links[:40]:
+                print(f"    {href[:200]}")
+    finally:
+        fetcher.close()
     return 0
 
 

@@ -63,3 +63,15 @@ def test_program_page():
     assert len(target) == 1 and "October 2027" in target[0].title
     assert target[0].signal == "open"
     assert page.page_signal == "open"
+
+
+def test_menu_links_are_not_postings():
+    assert not extract.looks_like_posting("Graduate Nurse Residency Program", "/professions/graduate-nurse/")
+    assert not extract.looks_like_posting("Check Out Our GN Positions*", "/listjobs/?keyword=GN")
+    assert not extract.looks_like_posting("Nurse Residency Tracks", "/careers/nurse-residency-tracks#NRTracks")
+    assert not extract.looks_like_posting("PBRNR program goals", "")
+    assert extract.looks_like_posting("New Grad Nurse Residency", "/fort-worth-tx/new-grad-nurse-residency/0664AE8F/job/")
+    assert extract.looks_like_posting("New Grad RN Residency - Med Surg", "")
+    assert extract.looks_like_posting("Nurse Residency Program - October 2027", "")
+    page = extract.analyze((FIX / "jobs_board.html").read_text(), "https://jobs.example.org/search", "jobs", NOW)
+    assert "Nurse Residency Program" not in {i.title for i in page.items}

@@ -61,6 +61,14 @@ CLOSED_RE = re.compile(
     r"no\s+longer\s+accepting|application\s+(?:window|period)\s+(?:is\s+|has\s+)?closed",
     re.I,
 )
+# Link text that names a section of a site rather than an actual job opening.
+NAV_RE = re.compile(
+    r"\b(?:information|info|tracks?|opportunit\w*|learn|check\s+out|overview|faqs?|goals?|outcomes?|"
+    r"structure|qualifications|benefits|faculty|about|click|view\s+all|see\s+all|positions)\b",
+    re.I,
+)
+JOB_HREF_RE = re.compile(r"/jobs?/[^?#]*\d|/job/|job_?id=|requisition|/details?/|/posting/|jobdetail", re.I)
+TITLE_SEPARATOR_RE = re.compile(r"\s[-–—|:]\s|[,(]|\s[-–—]|[-–—]\s")
 JSON_TITLE_RE = re.compile(r'"(?:title|jobTitle|postingTitle|job_title|name)"\s*:\s*"((?:[^"\\]|\\.){6,200})"')
 
 
@@ -180,6 +188,15 @@ def is_residency_title(text: str) -> bool:
     return bool(RESIDENCY_RE.search(text)) and not NOT_NURSING_RE.search(text)
 
 
+def looks_like_posting(title: str, href: str = "", now_idx: int = 0) -> bool:
+    """Filters out menu links like "Nurse Residency Program" or "Program goals"."""
+    if href and JOB_HREF_RE.search(href):
+        return True
+    if find_cohorts(title, now_idx or 2026 * 12):
+        return True
+    return bool(TITLE_SEPARATOR_RE.search(title)) and not NAV_RE.search(title)
+
+
 def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -> list[Item]:
     items: dict[str, Item] = {}
     for a in soup.find_all("a", href=True):
@@ -187,6 +204,8 @@ def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -
         if not (6 <= len(title) <= 200) or not is_residency_title(title):
             continue
         href = a["href"].strip()
+        if not looks_like_posting(title, href, now_idx):
+            continue
         if href.startswith(("javascript:", "mailto:", "tel:")):
             href = ""
         url = urljoin(base_url, href) if href and not href.startswith("#") else base_url
@@ -201,7 +220,7 @@ def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -
             title = _clean(json.loads(f'"{m.group(1)}"'))
         except ValueError:
             title = _clean(m.group(1))
-        if not is_residency_title(title) or "<" in title:
+        if not is_residency_title(title) or "<" in title or not looks_like_posting(title, "", now_idx):
             continue
         window = raw_html[max(0, m.start() - 600): m.end() + 600]
         loc = re.search(r'"(?:city|location|cityState|primaryLocation|address)"\s*:\s*"([^"]{2,80})"', window)
@@ -239,10 +258,11 @@ def _snippets(text: str, base_url: str, now_idx: int) -> list[Item]:
 def analyze(html: str, base_url: str, kind: str, now_idx: int) -> PageResult:
     soup = BeautifulSoup(html, "html.parser")
     text = visible_text(html)
-    items = _postings(soup, html, base_url, now_idx)
     if kind == "page":
-        posting_titles = {i.title.lower() for i in items}
-        items += [s for s in _snippets(text, base_url, now_idx) if s.title.lower() not in posting_titles]
+        # Program pages: read the dates in the text; their links are just site navigation.
+        items = _snippets(text, base_url, now_idx)
+    else:
+        items = _postings(soup, html, base_url, now_idx)
     # Hash only lines that look relevant so rotating banners/news don't count as changes.
     relevant = "\n".join(line for line in text.splitlines() if CONTEXT_RE.search(line) or MONTH_RE.search(line))
     text_hash = hashlib.sha1(relevant.encode()).hexdigest()[:16]
