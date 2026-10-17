@@ -1,6 +1,6 @@
 # DFW Nurse Residency Watch
 
-Looking for residency cohorts **starting August 2027 or later**. Home location: **ZIP 76131**. Last check: **Oct 17 2026 6:12 PM** (Central). Updated automatically — see [README](README.md).
+Looking for residency cohorts **starting August 2027 or later**. Home location: **ZIP 76131**. Last check: **Oct 17 2026 6:28 PM** (Central). Updated automatically — see [README](README.md).
 
 ## 🎯 Cohorts you can apply for (0)
 
@@ -12,9 +12,15 @@ _Nothing yet._
 
 Open the link to check the cohort — these might fit.
 
-| Miles | Hospital | Posting / text | Cohort | Signal | First seen |
-|---:|---|---|---|---|---|
-| 18.6 | AdventHealth (Texas Health Huguley) | [Fort Worth, TX Heritage Nurse Residency FALL](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site/job/HU-TEXAS-HUGULEY-MEM-MED-CNTR/Fort-Worth--TX-Heritage-Nurse-Residency-FALL_R-0390418) |  |  | Oct 6 2026 |
+| Miles | Hospital | Posting / text | Cohort | You | First seen | Code |
+|---:|---|---|---|---|---|---|
+| 18.6 | AdventHealth (Texas Health Huguley) | [Fort Worth, TX Heritage Nurse Residency FALL](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site/job/HU-TEXAS-HUGULEY-MEM-MED-CNTR/Fort-Worth--TX-Heritage-Nurse-Residency-FALL_R-0390418) |  | 🆕 | Oct 6 2026 | `6520b6` |
+
+## 📝 Your applications (0 applied, 0 opened)
+
+Postings you've marked. To mark one, add the label `applied`, `opened` or `skip` to its alert issue, or use the **Code** column with *Actions → Track applications → Run workflow* (see README).
+
+_Nothing marked yet._
 
 ## 🔔 Recent activity
 
@@ -28,40 +34,40 @@ Open the link to check the cohort — these might fit.
 
 Too early for you, but they show when each hospital opens applications — expect your cohort to post about a year later.
 
-| Miles | Hospital | Posting / text | Cohort | Signal | First seen |
-|---:|---|---|---|---|---|
-| 8.7 | Cook Children's (campus not stated) | [Important! You may only apply to one of the above tracks.: February and April 2027 Cohorts](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 2027 |  | Oct 6 2026 |
-| 8.7 | Cook Children's (campus not stated) | [Please apply if you have graduated with a BSN or entry-level MSN between August and December 2026.](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | December 2026 |  | Oct 6 2026 |
-| 8.7 | Cook Children's (campus not stated) | [Selection notification date:: October 5, 2026](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | October 5, 2026 |  | Oct 6 2026 |
-| 8.7 | Cook Children's (campus not stated) | [Start date:: Feb. 8 and April 5, 2027](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 5, 2027 | 🟢 open | Oct 6 2026 |
-| 8.7 | Cook Children's (campus not stated) | [Feb. 2027: Accepting applications for both clinical tracks (](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Feb. 2027 | 🟢 open | Oct 6 2026 |
-| 8.7 | Cook Children's (campus not stated) | [April 2027: Accepting applications for Medical-Surgical and Subspecialty Nursing track only. Please see the](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 2027 | 🟢 open | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [Graduate Nurse Winter 2027 Residency Program](https://jobs.bswhealth.com/us/en/students-graduates) | Winter 2027 |  | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [Application: Beginning September 7, 2026](https://jobs.bswhealth.com/us/en/students-graduates) | September 7, 2026 | 🟢 open | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [September 27, 2026](https://jobs.bswhealth.com/us/en/students-graduates) | September 27, 2026 | 🟢 open | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [For current Baylor Scott & White team members, applications open August 17, 2026.](https://jobs.bswhealth.com/us/en/students-graduates) | August 17, 2026 | 🟢 open | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [Interview: Beginning in October 2026](https://jobs.bswhealth.com/us/en/students-graduates) | October 2026 |  | Oct 6 2026 |
-| 9.2 | Baylor Scott & White Health (campus not stated) | [Get started: Beginning January 25, 2027](https://jobs.bswhealth.com/us/en/students-graduates) | January 25, 2027 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of February 9, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | February 9, 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Start: July/August 2026](https://jpshealthnet.org/careers/nurse-residency-application) | August 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of June 15, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | June 15, 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Start: October 2026](https://jpshealthnet.org/careers/nurse-residency-application) | October 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of October 12, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | October 12, 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Start: February/March 2027](https://jpshealthnet.org/careers/nurse-residency-application) | March 2027 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [Internal January 1, 2026 – January 22, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | January 1, 2026, January 22, 2026 |  | Oct 6 2026 |
-| 9.4 | JPS Health Network (campus not stated) | [External September 1, 2026 – September 8, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | September 1, 2026, September 8, 2026 |  | Oct 6 2026 |
-| 13.2 | Methodist Health System (campus not stated) | [Applications for the February 2027 cohort are closed.](https://www.methodisthealthsystem.org/careers/nurse-residency) | February 2027 |  | Oct 7 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: February 8, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | February 8, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: July 12, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | July 12, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: January 11, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | January 11, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: Oct. 26 – Nov. 6, 2026](https://jobs.utsouthwestern.edu/nursing-residency/) | Nov. 6, 2026 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: June 7, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | June 7, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: Feb. 22 – March 5, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | March 5, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: Jan 4, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | Jan 4, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: June 21, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | June 21, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: March 1 – March 12, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | March 12, 2027 |  | Oct 6 2026 |
-| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates: Jan. 25 – Feb. 5, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | Feb. 5, 2027 |  | Oct 14 2026 |
-| 29.3 | Children's Health (campus not stated) | [Eligibility Requirements/Application Process: February 2027 Nurse Residency Program](https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency) | February 2027 | 🟢 open | Oct 6 2026 |
+| Miles | Hospital | Posting / text | Cohort | You | First seen | Code |
+|---:|---|---|---|---|---|---|
+| 8.7 | Cook Children's (campus not stated) | [Important! You may only apply to one of the above tracks.: February and April 2027 Cohorts](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 2027 | 🆕 | Oct 6 2026 | `799c9e` |
+| 8.7 | Cook Children's (campus not stated) | [Please apply if you have graduated with a BSN or entry-level MSN between August and December 2026.](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | December 2026 | 🆕 | Oct 6 2026 | `9072fe` |
+| 8.7 | Cook Children's (campus not stated) | [Selection notification date:: October 5, 2026](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | October 5, 2026 | 🆕 | Oct 6 2026 | `5de273` |
+| 8.7 | Cook Children's (campus not stated) | [Start date:: Feb. 8 and April 5, 2027](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 5, 2027 · 🟢 open | 🆕 | Oct 6 2026 | `468884` |
+| 8.7 | Cook Children's (campus not stated) | [Feb. 2027: Accepting applications for both clinical tracks (](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Feb. 2027 · 🟢 open | 🆕 | Oct 6 2026 | `d4e20f` |
+| 8.7 | Cook Children's (campus not stated) | [April 2027: Accepting applications for Medical-Surgical and Subspecialty Nursing track only. Please see the](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 2027 · 🟢 open | 🆕 | Oct 6 2026 | `05cae3` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [Graduate Nurse Winter 2027 Residency Program](https://jobs.bswhealth.com/us/en/students-graduates) | Winter 2027 | 🆕 | Oct 6 2026 | `8d5c07` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [Application: Beginning September 7, 2026](https://jobs.bswhealth.com/us/en/students-graduates) | September 7, 2026 · 🟢 open | 🆕 | Oct 6 2026 | `bec952` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [September 27, 2026](https://jobs.bswhealth.com/us/en/students-graduates) | September 27, 2026 · 🟢 open | 🆕 | Oct 6 2026 | `e9d30e` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [For current Baylor Scott & White team members, applications open August 17, 2026.](https://jobs.bswhealth.com/us/en/students-graduates) | August 17, 2026 · 🟢 open | 🆕 | Oct 6 2026 | `a2cc89` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [Interview: Beginning in October 2026](https://jobs.bswhealth.com/us/en/students-graduates) | October 2026 | 🆕 | Oct 6 2026 | `ce788e` |
+| 9.2 | Baylor Scott & White Health (campus not stated) | [Get started: Beginning January 25, 2027](https://jobs.bswhealth.com/us/en/students-graduates) | January 25, 2027 | 🆕 | Oct 6 2026 | `e155d6` |
+| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of February 9, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | February 9, 2026 | 🆕 | Oct 6 2026 | `9f394f` |
+| 9.4 | JPS Health Network (campus not stated) | [Start: July/August 2026](https://jpshealthnet.org/careers/nurse-residency-application) | August 2026 | 🆕 | Oct 6 2026 | `b37418` |
+| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of June 15, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | June 15, 2026 | 🆕 | Oct 6 2026 | `4a27c4` |
+| 9.4 | JPS Health Network (campus not stated) | [Start: October 2026](https://jpshealthnet.org/careers/nurse-residency-application) | October 2026 | 🆕 | Oct 6 2026 | `68db25` |
+| 9.4 | JPS Health Network (campus not stated) | [Interviews: Week of October 12, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | October 12, 2026 | 🆕 | Oct 6 2026 | `cc6401` |
+| 9.4 | JPS Health Network (campus not stated) | [Start: February/March 2027](https://jpshealthnet.org/careers/nurse-residency-application) | March 2027 | 🆕 | Oct 6 2026 | `edc213` |
+| 9.4 | JPS Health Network (campus not stated) | [Internal January 1, 2026 – January 22, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | January 1, 2026, January 22, 2026 | 🆕 | Oct 6 2026 | `6310f0` |
+| 9.4 | JPS Health Network (campus not stated) | [External September 1, 2026 – September 8, 2026](https://jpshealthnet.org/careers/nurse-residency-application) | September 1, 2026, September 8, 2026 | 🆕 | Oct 6 2026 | `9531fa` |
+| 13.2 | Methodist Health System (campus not stated) | [Applications for the February 2027 cohort are closed.](https://www.methodisthealthsystem.org/careers/nurse-residency) | February 2027 | 🆕 | Oct 7 2026 | `e56dc2` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: February 8, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | February 8, 2027 | 🆕 | Oct 6 2026 | `b55df4` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: July 12, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | July 12, 2027 | 🆕 | Oct 6 2026 | `8966d9` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: January 11, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | January 11, 2027 | 🆕 | Oct 6 2026 | `d1b119` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: Oct. 26 – Nov. 6, 2026](https://jobs.utsouthwestern.edu/nursing-residency/) | Nov. 6, 2026 | 🆕 | Oct 6 2026 | `e19cd4` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: June 7, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | June 7, 2027 | 🆕 | Oct 6 2026 | `a5742b` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: Feb. 22 – March 5, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | March 5, 2027 | 🆕 | Oct 6 2026 | `fdfa32` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: Jan 4, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | Jan 4, 2027 | 🆕 | Oct 6 2026 | `640684` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Cohort starts:: June 21, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | June 21, 2027 | 🆕 | Oct 6 2026 | `303dce` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates:: March 1 – March 12, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | March 12, 2027 | 🆕 | Oct 6 2026 | `2f894f` |
+| 28.9 | UT Southwestern Medical Center (campus not stated) | [Application dates: Jan. 25 – Feb. 5, 2027](https://jobs.utsouthwestern.edu/nursing-residency/) | Feb. 5, 2027 | 🆕 | Oct 14 2026 | `1a930e` |
+| 29.3 | Children's Health (campus not stated) | [Eligibility Requirements/Application Process: February 2027 Nurse Residency Program](https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency) | February 2027 · 🟢 open | 🆕 | Oct 6 2026 | `270cff` |
 
 ## 🏥 Hospitals by priority
 
@@ -133,23 +139,23 @@ Every page that gets checked. ❌ rows usually mean the website moved the page �
 
 | Status | Source | Last checked | Found | Note |
 |---|---|---|---:|---|
-| ✅ | [Baylor Scott & White Health — bsw-students-graduates](https://jobs.bswhealth.com/us/en/students-graduates) | Oct 17 2026 6:12 PM | 6 | via http · says open |
-| ✅ | [Baylor Scott & White Health — bsw-search-residency](https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [Cook Children's — cook-nurse-residency](https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Oct 17 2026 6:12 PM | 6 | via http · says open |
-| ✅ | [JPS Health Network — jps-nurse-residency](https://jpshealthnet.org/node/1188) | Oct 17 2026 6:12 PM | 0 | via http · says open |
-| ✅ | [JPS Health Network — jps-nurse-residency-application](https://jpshealthnet.org/node/1241) | Oct 17 2026 6:12 PM | 8 | via http · says open |
-| ✅ | [Job aggregators (all DFW) — dejobs-dallas](https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX&sort=date) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [Job aggregators (all DFW) — dejobs-fort-worth](https://dejobs.org/jobs/?q=nurse+residency&location=Fort+Worth%2C+TX&sort=date) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [Job aggregators (all DFW) — dejobs-new-grad-texas](https://dejobs.org/jobs/?q=new+grad+residency&location=Texas&sort=date) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [Medical City Healthcare (HCA) — hca-dejobs-new-grad](https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [Methodist Health System — methodist-nurse-residency](https://www.methodisthealthsystem.org/careers/nurse-residency) | Oct 17 2026 6:12 PM | 1 | via http |
-| ✅ | [Texas Health Resources — thr-gn-residency-search](https://jobs.texashealth.org/listjobs/?keyword=(GN%20OR%20%22Graduate%20Nurse%22)%20AND%20Residency&category=RN%2FRegistered%20Nurse) | Oct 17 2026 6:12 PM | 0 | via browser |
-| ✅ | [AdventHealth — adventhealth-workday](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site) | Oct 17 2026 3:43 PM | 1 | via api |
-| ✅ | [Children's Health — childrens-nurse-residency](https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency) | Oct 17 2026 3:43 PM | 1 | via http · says open |
-| ✅ | [Parkland Health — parkland-bridge-program](https://www.parklandhealth.org/the-bridge-nurse-residency-program) | Oct 17 2026 3:43 PM | 0 | via http · says open |
-| ✅ | [Parkland Health — parkland-workday](https://wd12.myworkdaysite.com/en-US/recruiting/parklandhospital/Parkland_Careers) | Oct 17 2026 3:43 PM | 0 | via api |
-| ✅ | [UT Southwestern Medical Center — utsw-nursing-residency](https://jobs.utsouthwestern.edu/nursing-residency/) | Oct 17 2026 3:43 PM | 10 | via http |
-| ✅ | [VA North Texas Health Care System — va-pbrnr](https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/) | Oct 17 2026 3:43 PM | 0 | via http |
-| ✅ | [VA North Texas Health Care System — usajobs-nurse-residency-dallas](https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas) | Oct 17 2026 3:43 PM | 0 | via browser |
+| ✅ | [Baylor Scott & White Health — bsw-students-graduates](https://jobs.bswhealth.com/us/en/students-graduates) | Oct 17 2026 6:28 PM | 6 | via http · says open |
+| ✅ | [Baylor Scott & White Health — bsw-search-residency](https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [Cook Children's — cook-nurse-residency](https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Oct 17 2026 6:28 PM | 6 | via http · says open |
+| ✅ | [JPS Health Network — jps-nurse-residency](https://jpshealthnet.org/node/1188) | Oct 17 2026 6:28 PM | 0 | via http · says open |
+| ✅ | [JPS Health Network — jps-nurse-residency-application](https://jpshealthnet.org/node/1241) | Oct 17 2026 6:28 PM | 8 | via http · says open |
+| ✅ | [Job aggregators (all DFW) — dejobs-dallas](https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX&sort=date) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [Job aggregators (all DFW) — dejobs-fort-worth](https://dejobs.org/jobs/?q=nurse+residency&location=Fort+Worth%2C+TX&sort=date) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [Job aggregators (all DFW) — dejobs-new-grad-texas](https://dejobs.org/jobs/?q=new+grad+residency&location=Texas&sort=date) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [Medical City Healthcare (HCA) — hca-dejobs-new-grad](https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [Methodist Health System — methodist-nurse-residency](https://www.methodisthealthsystem.org/careers/nurse-residency) | Oct 17 2026 6:28 PM | 1 | via http |
+| ✅ | [Texas Health Resources — thr-gn-residency-search](https://jobs.texashealth.org/listjobs/?keyword=(GN%20OR%20%22Graduate%20Nurse%22)%20AND%20Residency&category=RN%2FRegistered%20Nurse) | Oct 17 2026 6:28 PM | 0 | via browser |
+| ✅ | [AdventHealth — adventhealth-workday](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site) | Oct 17 2026 6:28 PM | 1 | via api |
+| ✅ | [Children's Health — childrens-nurse-residency](https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency) | Oct 17 2026 6:28 PM | 1 | via http · says open |
+| ✅ | [Parkland Health — parkland-bridge-program](https://www.parklandhealth.org/the-bridge-nurse-residency-program) | Oct 17 2026 6:28 PM | 0 | via http · says open |
+| ✅ | [Parkland Health — parkland-workday](https://wd12.myworkdaysite.com/en-US/recruiting/parklandhospital/Parkland_Careers) | Oct 17 2026 6:28 PM | 0 | via api |
+| ❌ | [UT Southwestern Medical Center — utsw-nursing-residency](https://jobs.utsouthwestern.edu/nursing-residency/) | Oct 17 2026 6:28 PM |  | HTTP 403 · failing 1× in a row |
+| ✅ | [VA North Texas Health Care System — va-pbrnr](https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/) | Oct 17 2026 6:28 PM | 0 | via http |
+| ✅ | [VA North Texas Health Care System — usajobs-nurse-residency-dallas](https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas) | Oct 17 2026 6:28 PM | 0 | via browser |
 
-_Generated Oct 17 2026 6:12 PM Central._
+_Generated Oct 17 2026 6:29 PM Central._
