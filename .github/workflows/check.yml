@@ -58,8 +58,8 @@ jobs:
         run: |
           python -m residency_watch run --alerts-out alerts.json ${{ inputs.force && '--force' || '' }}
 
-      - name: Open an issue per new residency posting
-        if: steps.run.outputs.has_alerts == 'true'
+      - name: Make sure the tracking labels exist
+        if: inputs.probe == ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -67,6 +67,12 @@ jobs:
           gh label create applied --color 0E8A16 --description "You applied to this residency" 2>/dev/null || true
           gh label create opened --color 1D76DB --description "You've looked at this posting" 2>/dev/null || true
           gh label create skip --color BFBFBF --description "Not interested: no more alerts about it" 2>/dev/null || true
+
+      - name: Open an issue per new residency posting
+        if: steps.run.outputs.has_alerts == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
           jq -c '.[]' alerts.json | while read -r alert; do
             fid=$(jq -r '.finding_id // empty' <<<"$alert")
             issue=$(jq -r '.issue // empty' <<<"$alert")
