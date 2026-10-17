@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS findings (
     first_seen TEXT,
     last_seen TEXT,
     active INTEGER DEFAULT 1,
-    missed INTEGER DEFAULT 0
+    missed INTEGER DEFAULT 0,
+    issue_number INTEGER  -- GitHub issue opened for this posting
 );
 CREATE TABLE IF NOT EXISTS events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -77,7 +78,15 @@ def open_db(dump_path: Path = DUMP_PATH, db_path: Path | None = DB_PATH) -> sqli
     if dump_path.exists():
         conn.executescript(dump_path.read_text())
     conn.executescript(SCHEMA)
+    _migrate(conn)
     return conn
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    """Adds columns introduced after a database was first created."""
+    cols = {r["name"] for r in conn.execute("PRAGMA table_info(findings)")}
+    if "issue_number" not in cols:
+        conn.execute("ALTER TABLE findings ADD COLUMN issue_number INTEGER")
 
 
 def save_db(conn: sqlite3.Connection, dump_path: Path = DUMP_PATH) -> None:

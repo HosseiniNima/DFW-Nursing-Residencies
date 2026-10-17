@@ -6,7 +6,7 @@ import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
 
-from . import extract, workday
+from . import extract, marks as marks_mod, workday
 from .config import Hospital, Settings, Source
 from .fetch import Fetcher
 
@@ -62,6 +62,14 @@ def _url_words(url: str) -> str:
     return re.sub(r"[-_/+%]+", " ", path)
 
 
+def _rename_finding(conn: sqlite3.Connection, old_id: str, new_id: str, marks: dict | None) -> None:
+    conn.execute("DELETE FROM findings WHERE id = ?", (new_id,))
+    conn.execute("UPDATE findings SET id = ? WHERE id = ?", (new_id, old_id))
+    conn.execute("UPDATE events SET finding_id = ? WHERE finding_id = ?", (new_id, old_id))
+    if marks is not None and old_id in marks:
+        marks[new_id] = marks.pop(old_id)
+
+
 def _level_for_new(relevance: str, kind: str, baseline: bool) -> str | None:
     if relevance == "target":
         return "high"
@@ -82,7 +90,8 @@ def _describe(src: Source, item_title: str, cohort: str, hospital: Hospital | No
     return f"{where}: {item_title}{cohort_part}"
 
 
-def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetcher: Fetcher, now: datetime) -> dict:
+def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetcher: Fetcher, now: datetime,
+                 marks: dict | None = None) -> dict:
     now_s = iso(now)
     now_idx = now.year * 12 + now.month - 1
     row = conn.execute("SELECT * FROM sources WHERE id = ?", (src.id,)).fetchone()
@@ -100,6 +109,8 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
     events: list[tuple] = []
 
     def event(type_, level, message, finding_id=None, url=None):
+        if finding_id and level != "low" and marks_mod.status_of(marks or {}, finding_id) == "skip":
+            return  # you said you're not interested in this one
         events.append((now_s, src.id, finding_id, type_, level, message, url or src.url))
 
     if not res.ok:
@@ -136,6 +147,15 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
         fid = f"{src.id}:{item.key}"
         seen_ids.add(fid)
         old = conn.execute("SELECT * FROM findings WHERE id = ?", (fid,)).fetchone()
+        if old is None and item.kind == "posting" and extract.JOB_HREF_RE.search(item.url):
+            # Same job link, reworded title: it's the same posting, keep its history and marks.
+            old = conn.execute(
+                "SELECT * FROM findings WHERE source_id = ? AND url = ? AND kind = 'posting' ORDER BY last_seen DESC LIMIT 1",
+                (src.id, item.url),
+            ).fetchone()
+            if old is not None:
+                _rename_finding(conn, old["id"], fid, marks)
+                old = conn.execute("SELECT * FROM findings WHERE id = ?", (fid,)).fetchone()
         if old is None:
             conn.execute(
                 "INSERT INTO findings (id, source_id, system_id, kind, title, url, cohort, relevance, signal, hospital_id, first_seen, last_seen, active, missed)"
@@ -188,8 +208,11 @@ def check_source(conn: sqlite3.Connection, settings: Settings, src: Source, fetc
 
 
 def run(conn: sqlite3.Connection, settings: Settings, force: bool = False, only: set[str] | None = None,
-        fetcher: Fetcher | None = None, now: datetime | None = None) -> list[dict]:
+        fetcher: Fetcher | None = None, now: datetime | None = None, marks: dict | None = None,
+        save_marks: bool = True) -> list[dict]:
     now = now or utcnow()
+    marks = marks_mod.load() if marks is None else marks
+    marks_before = dict(marks)
     own_fetcher = fetcher is None
     fetcher = fetcher or Fetcher(settings.timeout, settings.per_host_delay, settings.browser_fallback)
     results = []
@@ -203,7 +226,7 @@ def run(conn: sqlite3.Connection, settings: Settings, force: bool = False, only:
             if not force and not only and not is_due(src, row["last_checked"] if row else None, now):
                 continue
             try:
-                result = check_source(conn, settings, src, fetcher, now)
+                result = check_source(conn, settings, src, fetcher, now, marks)
             except Exception as exc:  # one broken page must not stop the rest
                 result = {"source": src.id, "ok": False, "error": f"{type(exc).__name__}: {exc}"}
             conn.commit()
@@ -214,10 +237,12 @@ def run(conn: sqlite3.Connection, settings: Settings, force: bool = False, only:
             fetcher.close()
     # Sources removed from hospitals.yaml: forget them and what they found.
     configured = [s.id for s in settings.sources]
-    marks = ",".join("?" * len(configured))
-    conn.execute(f"DELETE FROM findings WHERE source_id NOT IN ({marks})", configured)
-    conn.execute(f"DELETE FROM sources WHERE id NOT IN ({marks})", configured)
+    placeholders = ",".join("?" * len(configured))
+    conn.execute(f"DELETE FROM findings WHERE source_id NOT IN ({placeholders})", configured)
+    conn.execute(f"DELETE FROM sources WHERE id NOT IN ({placeholders})", configured)
     cutoff = iso(now - timedelta(days=settings.keep_check_history_days))
     conn.execute("DELETE FROM checks WHERE checked_at < ?", (cutoff,))
     conn.commit()
+    if save_marks and marks != marks_before:  # a marked posting was renamed
+        marks_mod.save(marks)
     return results

@@ -1,0 +1,98 @@
+name: Track applications
+
+# Records what you've done with each posting, so REPORT.md shows it and
+# postings you skip stop alerting you.
+#
+#   On an alert issue: add the label `applied`, `opened` or `skip`
+#   (closing the issue counts as opened; removing labels clears it).
+#
+#   For anything in REPORT.md: Actions → Track applications → Run workflow,
+#   then enter the posting's Code from the report.
+
+on:
+  issues:
+    types: [labeled, unlabeled, closed, reopened]
+  workflow_dispatch:
+    inputs:
+      code:
+        description: "Code from REPORT.md (e.g. 3fa9c2), or an alert issue number (e.g. #12)"
+        required: true
+        type: string
+      status:
+        description: "What you did"
+        required: true
+        type: choice
+        options: [applied, opened, skip, clear]
+        default: applied
+      note:
+        description: "Optional note (e.g. interview 3/14)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: track-applications
+  cancel-in-progress: false
+
+jobs:
+  track:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'residency-alert')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      HOME_ZIP: ${{ vars.HOME_ZIP }}
+      HOME_LAT: ${{ vars.HOME_LAT }}
+      HOME_LON: ${{ vars.HOME_LON }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Record and save
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          NUMBER: ${{ github.event.issue.number }}
+          CODE: ${{ inputs.code }}
+          STATUS: ${{ inputs.status }}
+          NOTE: ${{ inputs.note }}
+        run: |
+          record() {
+            if [ "$EVENT" = "workflow_dispatch" ]; then
+              python -m residency_watch mark "$CODE" "$STATUS" ${NOTE:+--note "$NOTE"}
+            else
+              # Read the issue as it is now, in case several labels changed quickly.
+              json=$(gh issue view "$NUMBER" --json labels,state,body)
+              ISSUE_NUMBER="$NUMBER" \
+              ISSUE_STATE=$(jq -r .state <<<"$json") \
+              ISSUE_LABELS=$(jq -r '[.labels[].name] | join(",")' <<<"$json") \
+              ISSUE_BODY=$(jq -r .body <<<"$json") \
+                python -m residency_watch sync-issue
+            fi
+          }
+          git config user.name "residency-watch[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            record
+            git add -A data REPORT.md
+            if git diff --cached --quiet; then
+              echo "Nothing to save."
+              exit 0
+            fi
+            git commit -m "Track: ${CODE:-issue #$NUMBER} ${STATUS:-}"
+            git push && exit 0
+            # A check run pushed meanwhile: start again from the latest version.
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --hard "origin/${GITHUB_REF_NAME}"
+            sleep $((attempt * 3))
+          done
+          exit 1

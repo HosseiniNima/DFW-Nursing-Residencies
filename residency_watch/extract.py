@@ -69,6 +69,8 @@ NAV_RE = re.compile(
 )
 JOB_HREF_RE = re.compile(r"/jobs?/[^?#]*\d|/job/|job_?id=|requisition|/details?/|/posting/|jobdetail", re.I)
 TITLE_SEPARATOR_RE = re.compile(r"\s[-–—|:]\s|[,(]|\s[-–—]|[-–—]\s")
+# Job boards append how old a posting is ("Posted 21 days ago"), which changes daily.
+POSTED_AGO_RE = re.compile(r"\s*\bPosted\s+(?:today|yesterday|just\s+now|\d+\+?\s+\w+\s+ago)\b.*$", re.I)
 JSON_TITLE_RE = re.compile(r'"(?:title|jobTitle|postingTitle|job_title|name)"\s*:\s*"((?:[^"\\]|\\.){6,200})"')
 
 
@@ -217,7 +219,7 @@ def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -
         url = urljoin(base_url, href) if href and not href.startswith("#") else base_url
         parent = a.find_parent(["li", "tr", "article", "section", "div"]) or a.parent
         context = _clean(parent.get_text(" "))[:400] if parent else title
-        item = Item("posting", title, url, context)
+        item = Item("posting", POSTED_AGO_RE.sub("", title).strip(), url, context)
         items.setdefault(item.key, item)
 
     # Many job boards ship their results as JSON inside the page.
@@ -230,6 +232,7 @@ def _postings(soup: BeautifulSoup, raw_html: str, base_url: str, now_idx: int) -
             continue
         window = raw_html[max(0, m.start() - 600): m.end() + 600]
         loc = re.search(r'"(?:city|location|cityState|primaryLocation|address)"\s*:\s*"([^"]{2,80})"', window)
+        title = POSTED_AGO_RE.sub("", title).strip()
         item = Item("posting", title, base_url, f"{title} {loc.group(1) if loc else ''}".strip())
         if not any(_clean(i.title).lower() == title.lower() for i in items.values()):
             items.setdefault(item.key, item)

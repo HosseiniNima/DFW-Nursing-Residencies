@@ -3,4 +3,5 @@ __pycache__/
 .pytest_cache/
 # Working copy rebuilt from data/residencies.sql on every run
 data/residencies.db
-alerts.md
+alerts.json
+alert-body.md

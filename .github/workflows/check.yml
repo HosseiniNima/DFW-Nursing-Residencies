@@ -28,6 +28,10 @@ jobs:
   check:
     name: Check hospital websites
     runs-on: ubuntu-latest
+    env:
+      HOME_ZIP: ${{ vars.HOME_ZIP }}
+      HOME_LAT: ${{ vars.HOME_LAT }}
+      HOME_LON: ${{ vars.HOME_LON }}
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -51,33 +55,52 @@ jobs:
       - name: Run checks
         if: inputs.probe == ''
         id: run
-        env:
-          HOME_ZIP: ${{ vars.HOME_ZIP }}
-          HOME_LAT: ${{ vars.HOME_LAT }}
-          HOME_LON: ${{ vars.HOME_LON }}
         run: |
-          python -m residency_watch run --alerts-out alerts.md ${{ inputs.force && '--force' || '' }}
+          python -m residency_watch run --alerts-out alerts.json ${{ inputs.force && '--force' || '' }}
 
-      - name: Open an issue for new residencies
+      - name: Open an issue per new residency posting
         if: steps.run.outputs.has_alerts == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh label create residency-alert --color D93F0B --description "New nurse residency activity" 2>/dev/null || true
-          title="$(head -n 1 alerts.md)"
-          tail -n +2 alerts.md > alerts-body.md
-          gh issue create --title "$title" --body-file alerts-body.md --label residency-alert
+          gh label create applied --color 0E8A16 --description "You applied to this residency" 2>/dev/null || true
+          gh label create opened --color 1D76DB --description "You've looked at this posting" 2>/dev/null || true
+          gh label create skip --color BFBFBF --description "Not interested: no more alerts about it" 2>/dev/null || true
+          jq -c '.[]' alerts.json | while read -r alert; do
+            fid=$(jq -r '.finding_id // empty' <<<"$alert")
+            issue=$(jq -r '.issue // empty' <<<"$alert")
+            jq -r '.body' <<<"$alert" > alert-body.md
+            if [ -n "$issue" ]; then
+              gh issue comment "$issue" --body-file alert-body.md
+            else
+              url=$(gh issue create --title "$(jq -r '.title' <<<"$alert")" --body-file alert-body.md --label residency-alert)
+              echo "Opened $url"
+              if [ -n "$fid" ]; then
+                python -m residency_watch link "$fid" "${url##*/}"
+              fi
+            fi
+          done
 
       - name: Save database and report
         if: always() && inputs.probe == ''
         run: |
           git config user.name "residency-watch[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/residencies.sql REPORT.md
+          git add -A data REPORT.md
           if git diff --cached --quiet; then
             echo "Nothing changed."
-          else
-            git commit -m "Residency check $(TZ=America/Chicago date '+%Y-%m-%d %H:%M %Z')"
-            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
-            git push
+            exit 0
           fi
+          git commit -m "Residency check $(TZ=America/Chicago date '+%Y-%m-%d %H:%M %Z')"
+          for attempt in 1 2 3 4 5; do
+            git push && exit 0
+            # Something else pushed meanwhile (usually a mark you added). Keep both,
+            # then rebuild the report so it shows your latest marks.
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" || { git rebase --abort; exit 1; }
+            python -m residency_watch report
+            git add -A data REPORT.md
+            git diff --cached --quiet || git commit -m "Refresh report"
+            sleep $((attempt * 3))
+          done
+          exit 1

@@ -7,8 +7,9 @@ starts in **August 2027 or later** is posted.
 - **Runs on its own.** A GitHub Action checks every 3 hours. Hospitals near
   your home are checked on every run, ones within 30 miles twice a day, and
   the rest of DFW once a day.
-- **Alerts you.** When a matching cohort shows up, it opens a GitHub issue,
-  and GitHub emails you about it. 🎯 = start date is in your window,
+- **Alerts you.** When a matching cohort shows up, it opens a GitHub issue
+  for that posting, and GitHub emails you about it. Label it `applied`,
+  `opened` or `skip` to keep track (see below). 🎯 = start date is in your window,
   ❓ = new residency posting where the start date isn't clear.
 - **Keeps a database.** Every posting, the date it was first and last seen,
   and every check are stored in SQLite (`data/residencies.sql`).
@@ -32,6 +33,30 @@ starts in **August 2027 or later** is posted.
    and tick **force**. After the first run, look at the *Source health* table
    in REPORT.md: any ❌ row is a URL that needs to be fixed in
    `hospitals.yaml`.
+
+## Tracking what you've applied to
+
+Each new posting gets **its own alert issue**. Mark it by adding a label
+(this works in the GitHub phone app too):
+
+| Label | Meaning |
+|---|---|
+| `applied` | You applied. It moves to **📝 Your applications** in the report, which keeps showing it even after the posting comes down. |
+| `opened` | You've looked at it. Closing the issue counts as opened too. |
+| `skip` | Not interested. It's hidden from the report and you won't get more alerts about it. |
+
+Removing the label clears the mark. If the same posting changes later (for
+example applications open, or it gets taken down), you get a comment on its
+existing issue instead of a new one.
+
+**For anything in the report without an issue** (e.g. a cohort date on a
+hospital's page): copy its 6-character **Code** from REPORT.md, then go to
+*Actions → Track applications → Run workflow*. Paste the code, pick
+`applied` / `opened` / `skip` / `clear`, and optionally add a note such as
+"interview 3/14". A note can also be added to an issue's posting this way:
+enter `#` and the issue number as the code.
+
+Marks are saved in `data/marks.json`, and the report updates within a minute.
 
 ## Changing things
 
@@ -67,6 +92,7 @@ python -m playwright install chromium     # optional: for JavaScript-heavy job s
 HOME_ZIP=75024 python -m residency_watch hospitals   # see the priority order
 HOME_ZIP=75024 python -m residency_watch run --force # check everything now
 python -m residency_watch run --only thr bsw         # just some systems/sources
+python -m residency_watch mark 3fa9c2 applied --note "interview 3/14"   # mark from the command line
 sqlite3 data/residencies.db "select title, cohort, relevance from findings where active"
 python -m pytest
 ```
