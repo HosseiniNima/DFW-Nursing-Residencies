@@ -16,11 +16,13 @@ Open the link to check the cohort — these might fit.
 |---:|---|---|---|---|---|---|
 | 18.6 | AdventHealth (Texas Health Huguley) | [Fort Worth, TX Heritage Nurse Residency FALL](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site/job/HU-TEXAS-HUGULEY-MEM-MED-CNTR/Fort-Worth--TX-Heritage-Nurse-Residency-FALL_R-0390418) |  | 🆕 | Oct 6 2026 | `6520b6` |
 
-## 📝 Your applications (0 applied, 0 opened)
+## 📝 Your applications (0 applied, 1 opened)
 
 Postings you've marked. To mark one, add the label `applied`, `opened` or `skip` to its alert issue, or use the **Code** column with *Actions → Track applications → Run workflow* (see README).
 
-_Nothing marked yet._
+| Miles | Hospital | Posting / text | Cohort | You | Still posted? | Code |
+|---:|---|---|---|---|---|---|
+| 23.1 | Medical City Lewisville | [New Grad Nurse Residency Lewisville, TX Posted 23 days ago](https://hcahealthcare.dejobs.org/lewisville-tx/new-grad-nurse-residency/67B83593570E45229763B32190358986/job/) |  | 👀 Opened (#1) | no (last seen Oct 8 2026) | `a8496e` |
 
 ## 🔔 Recent activity
 
@@ -158,4 +160,4 @@ Every page that gets checked. ❌ rows usually mean the website moved the page �
 | ✅ | [VA North Texas Health Care System — va-pbrnr](https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/) | Oct 17 2026 6:28 PM | 0 | via http |
 | ✅ | [VA North Texas Health Care System — usajobs-nurse-residency-dallas](https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas) | Oct 17 2026 6:28 PM | 0 | via browser |
 
-_Generated Oct 17 2026 6:29 PM Central._
+_Generated Oct 17 2026 6:30 PM Central._
