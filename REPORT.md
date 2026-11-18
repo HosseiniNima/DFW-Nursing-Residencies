@@ -1,6 +1,6 @@
 # DFW Nurse Residency Watch
 
-Looking for residency cohorts **starting August 2027 or later**. Home location: **ZIP 76131**. Last check: **Nov 18 2026 5:59 AM** (Central). Updated automatically — see [README](README.md).
+Looking for residency cohorts **starting August 2027 or later**. Home location: **ZIP 76131**. Last check: **Nov 18 2026 2:40 PM** (Central). Updated automatically — see [README](README.md).
 
 ## 🎯 Cohorts you can apply for (0)
 
@@ -8,7 +8,7 @@ Postings or announcements that mention a start date in your window, closest firs
 
 _Nothing yet._
 
-## ❓ Residency postings with an unclear start date (22)
+## ❓ Residency postings with an unclear start date (17)
 
 Open the link to check the cohort — these might fit.
 
@@ -19,21 +19,16 @@ Open the link to check the cohort — these might fit.
 | 9.0 | Medical City Fort Worth | [New Grad RN Residency Fort Worth, TX](https://hcahealthcare.dejobs.org/fort-worth-tx/new-grad-rn-residency/7A67798D1ABE4235AB2DB39E46153667/job/) |  | 🆕 (#11) | Nov 14 2026 | `8d56b6` |
 | 9.0 | Medical City Fort Worth | [New Grad RN Residency HCA Healthcare - Fort Worth, TX](https://dejobs.org/fort-worth-tx/new-grad-rn-residency/7A67798D1ABE4235AB2DB39E46153667/job/) |  | 🆕 (#18) | Nov 14 2026 | `128307` |
 | 9.0 | Medical City Fort Worth | [New Grad RN Residency HCA Healthcare - Fort Worth, TX](https://dejobs.org/fort-worth-tx/new-grad-rn-residency/7A67798D1ABE4235AB2DB39E46153667/job/) |  | 🆕 (#23) | Nov 14 2026 | `128307` |
-| 17.1 | Medical City Arlington | [New Grad RN Residency Arlington, TX](https://hcahealthcare.dejobs.org/arlington-tx/new-grad-rn-residency/A06F870AC34F4115B1A871BA1E2ADDD9/job/) |  | 🆕 (#15) | Nov 14 2026 | `e6cdc3` |
-| 17.1 | Medical City Arlington | [New Grad RN Residency HCA Healthcare - Arlington, TX](https://dejobs.org/arlington-tx/new-grad-rn-residency/A06F870AC34F4115B1A871BA1E2ADDD9/job/) |  | 🆕 (#27) | Nov 14 2026 | `af72dc` |
 | 18.6 | AdventHealth (Texas Health Huguley) | [Fort Worth, TX Heritage Nurse Residency FALL](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site/job/HU-TEXAS-HUGULEY-MEM-MED-CNTR/Fort-Worth--TX-Heritage-Nurse-Residency-FALL_R-0390418) |  | 🆕 | Oct 6 2026 | `6520b6` |
 | 22.1 | Medical City Las Colinas | [New Grad RN Residency Irving, TX](https://hcahealthcare.dejobs.org/irving-tx/new-grad-rn-residency/00027B9D739D49E5BB4AF9F634FF26B4/job/) |  | 🆕 (#13) | Nov 14 2026 | `129c25` |
-| 22.1 | Medical City Las Colinas | [New Grad RN Residency HCA Healthcare - Irving, TX](https://dejobs.org/irving-tx/new-grad-rn-residency/00027B9D739D49E5BB4AF9F634FF26B4/job/) |  | 🆕 (#25) | Nov 14 2026 | `757362` |
 | 26.0 | Medical City Denton | [New Grad RN Residency Denton, TX](https://hcahealthcare.dejobs.org/denton-tx/new-grad-rn-residency/F0A9FC7DDC2B4B47890B233F022EE4D1/job/) |  | 🆕 (#7) | Nov 14 2026 | `fea7bc` |
 | 26.0 | Medical City Denton | [New Grad RN Residency HCA Healthcare - Denton, TX](https://dejobs.org/denton-tx/new-grad-rn-residency/F0A9FC7DDC2B4B47890B233F022EE4D1/job/) |  | 🆕 (#19) | Nov 14 2026 | `afc20e` |
 | 27.2 | Medical City Weatherford | [New Grad RN Residency Weatherford, TX](https://hcahealthcare.dejobs.org/weatherford-tx/new-grad-rn-residency/CF5BD0F4139842438D9327BD1D3A5581/job/) |  | 🆕 (#9) | Nov 14 2026 | `8bdd9d` |
 | 27.2 | Medical City Weatherford | [New Grad RN Residency HCA Healthcare - Weatherford, TX](https://dejobs.org/weatherford-tx/new-grad-rn-residency/CF5BD0F4139842438D9327BD1D3A5581/job/) |  | 🆕 (#21) | Nov 14 2026 | `386b1b` |
-| 33.0 | Medical City Dallas | [Transition to Practice Educator Emergency Dept HCA Healthcare - Dallas, TX](https://dejobs.org/dallas-tx/transition-to-practice-educator-emergency-dept/C67E255722884D90A9D1C3F9EA47EAB3/job/) |  | 🆕 (#6) | Nov 11 2026 | `a77ad5` |
 | 33.0 | Medical City Dallas | [New Grad RN Residency Dallas, TX](https://hcahealthcare.dejobs.org/dallas-tx/new-grad-rn-residency/8D0BF59354E340BFB02A875E6F97BB93/job/) |  | 🆕 (#10) | Nov 14 2026 | `1a746d` |
 | 33.0 | Medical City Dallas | [New Grad RN Residency HCA Healthcare - Dallas, TX](https://dejobs.org/dallas-tx/new-grad-rn-residency/8D0BF59354E340BFB02A875E6F97BB93/job/) |  | 🆕 (#17) | Nov 14 2026 | `337974` |
 | 33.0 | Medical City Dallas | [New Grad RN Residency HCA Healthcare - Dallas, TX](https://dejobs.org/dallas-tx/new-grad-rn-residency/8D0BF59354E340BFB02A875E6F97BB93/job/) |  | 🆕 (#22) | Nov 14 2026 | `337974` |
 | 34.9 | Medical City Plano | [New Grad RN Residency Plano, TX](https://hcahealthcare.dejobs.org/plano-tx/new-grad-rn-residency/9C19DE39C3C64D2C930EF1E72DFCE21E/job/) |  | 🆕 (#14) | Nov 14 2026 | `10c1f3` |
-| 34.9 | Medical City Plano | [New Grad RN Residency HCA Healthcare - Plano, TX](https://dejobs.org/plano-tx/new-grad-rn-residency/9C19DE39C3C64D2C930EF1E72DFCE21E/job/) |  | 🆕 (#26) | Nov 14 2026 | `cebdcd` |
 | 45.3 | Medical City McKinney | [New Grad RN Residency Mckinney, TX](https://hcahealthcare.dejobs.org/mckinney-tx/new-grad-rn-residency/739E8C6FC58D48FCBA681CEB2BC97472/job/) |  | 🆕 (#8) | Nov 14 2026 | `b3686d` |
 | 45.3 | Medical City McKinney | [New Grad RN Residency HCA Healthcare - Mckinney, TX](https://dejobs.org/mckinney-tx/new-grad-rn-residency/739E8C6FC58D48FCBA681CEB2BC97472/job/) |  | 🆕 (#20) | Nov 14 2026 | `3a5928` |
 
@@ -45,6 +40,7 @@ _Nothing marked yet._
 
 ## 🔔 Recent activity
 
+- · Nov 18 2026 2:40 PM — Cook Children's: residency page content changed — worth a look ([link](https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program))
 - · Nov 18 2026 5:59 AM — Parkland Health: residency page content changed — worth a look ([link](https://www.parklandhealth.org/the-bridge-nurse-residency-program))
 - ❓ Nov 14 2026 4:38 AM — Medical City Decatur (29.0 mi): New Grad RN Residency HCA Healthcare - Decatur, TX ([link](https://dejobs.org/decatur-tx/new-grad-rn-residency/EED23BDC20CE41E5BE7E92467CBF05F9/job/))
 - ❓ Nov 14 2026 4:38 AM — Medical City Frisco (35.3 mi): New Grad RN Residency HCA Healthcare - Frisco, TX ([link](https://dejobs.org/frisco-tx/new-grad-rn-residency/EBF7A04AFFF847D1B0208FA91864952B/job/))
@@ -81,7 +77,7 @@ _Nothing marked yet._
 - ❓ Oct 7 2026 8:35 AM — Medical City Lewisville (23.1 mi): New Grad Nurse Residency Lewisville, TX Posted 22 days ago ([link](https://hcahealthcare.dejobs.org/lewisville-tx/new-grad-nurse-residency/67B83593570E45229763B32190358986/job/))
 - ❓ Oct 7 2026 1:09 AM — Medical City Lewisville (23.1 mi): New Grad Nurse Residency Lewisville, TX Posted 21 days ago ([link](https://hcahealthcare.dejobs.org/lewisville-tx/new-grad-nurse-residency/67B83593570E45229763B32190358986/job/))
 
-## 📅 Earlier cohorts currently posted (31)
+## 📅 Earlier cohorts currently posted (36)
 
 Too early for you, but they show when each hospital opens applications — expect your cohort to post about a year later.
 
@@ -93,6 +89,11 @@ Too early for you, but they show when each hospital opens applications — expec
 | 8.7 | Cook Children's (campus not stated) | [Start date:: Feb. 8 and April 5, 2027](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 5, 2027 · 🟢 open | 🆕 | Oct 6 2026 | `468884` |
 | 8.7 | Cook Children's (campus not stated) | [Feb. 2027: Accepting applications for both clinical tracks (](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Feb. 2027 · 🟢 open | 🆕 | Oct 6 2026 | `d4e20f` |
 | 8.7 | Cook Children's (campus not stated) | [April 2027: Accepting applications for Medical-Surgical and Subspecialty Nursing track only. Please see the](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | April 2027 · 🟢 open | 🆕 | Oct 6 2026 | `05cae3` |
+| 8.7 | Cook Children's (campus not stated) | [Important! You may only apply to one of the above tracks.: July 2027 Cohort](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | July 2027 | 🆕 | Nov 18 2026 | `ef7dad` |
+| 8.7 | Cook Children's (campus not stated) | [Please apply if you have graduated with a BSN or entry-level MSN between December 2026 and May 2027.](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | December 2026, May 2027 | 🆕 | Nov 18 2026 | `abff00` |
+| 8.7 | Cook Children's (campus not stated) | [Selection notification date: March 8, 2027](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | March 8, 2027 | 🆕 | Nov 18 2026 | `700aac` |
+| 8.7 | Cook Children's (campus not stated) | [Start date: July 12, 2027](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | July 12, 2027 · 🟢 open | 🆕 | Nov 18 2026 | `859c4c` |
+| 8.7 | Cook Children's (campus not stated) | [July 2027: Accepting applications for both clinical tracks (](https://www.cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | July 2027 · 🟢 open | 🆕 | Nov 18 2026 | `f77f42` |
 | 9.2 | Baylor Scott & White Health (campus not stated) | [Application: Beginning February 1, 2027](https://jobs.bswhealth.com/us/en/students-graduates) | February 1, 2027 · 🟢 open | 🆕 | Nov 3 2026 | `af6ad6` |
 | 9.2 | Baylor Scott & White Health (campus not stated) | [February 21, 2027](https://jobs.bswhealth.com/us/en/students-graduates) | February 21, 2027 · 🟢 open | 🆕 | Nov 3 2026 | `b95237` |
 | 9.2 | Baylor Scott & White Health (campus not stated) | [For current Baylor Scott & White team members, applications open January 11, 2027.](https://jobs.bswhealth.com/us/en/students-graduates) | January 11, 2027 · 🟢 open | 🆕 | Nov 3 2026 | `061884` |
@@ -189,23 +190,23 @@ Every page that gets checked. ❌ rows usually mean the website moved the page �
 
 | Status | Source | Last checked | Found | Note |
 |---|---|---|---:|---|
-| ✅ | [Baylor Scott & White Health — bsw-students-graduates](https://jobs.bswhealth.com/us/en/students-graduates) | Nov 18 2026 5:59 AM | 6 | via http · says open |
-| ✅ | [Baylor Scott & White Health — bsw-search-residency](https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency) | Nov 18 2026 5:59 AM | 0 | via browser |
-| ✅ | [Cook Children's — cook-nurse-residency](https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Nov 18 2026 5:59 AM | 6 | via http · says open |
-| ✅ | [JPS Health Network — jps-nurse-residency](https://jpshealthnet.org/node/1188) | Nov 18 2026 5:59 AM | 0 | via http · says open |
-| ✅ | [JPS Health Network — jps-nurse-residency-application](https://jpshealthnet.org/node/1241) | Nov 18 2026 5:59 AM | 8 | via http · says open |
-| ✅ | [Job aggregators (all DFW) — dejobs-dallas](https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX&sort=date) | Nov 18 2026 5:59 AM | 1 | via browser |
-| ✅ | [Job aggregators (all DFW) — dejobs-fort-worth](https://dejobs.org/jobs/?q=nurse+residency&location=Fort+Worth%2C+TX&sort=date) | Nov 18 2026 5:59 AM | 1 | via browser |
-| ✅ | [Job aggregators (all DFW) — dejobs-new-grad-texas](https://dejobs.org/jobs/?q=new+grad+residency&location=Texas&sort=date) | Nov 18 2026 5:59 AM | 6 | via browser |
-| ✅ | [Medical City Healthcare (HCA) — hca-dejobs-new-grad](https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date) | Nov 18 2026 5:59 AM | 8 | via browser |
-| ✅ | [Methodist Health System — methodist-nurse-residency](https://www.methodisthealthsystem.org/careers/nurse-residency) | Nov 18 2026 5:59 AM | 1 | via http |
-| ✅ | [Texas Health Resources — thr-gn-residency-search](https://jobs.texashealth.org/listjobs/?keyword=(GN%20OR%20%22Graduate%20Nurse%22)%20AND%20Residency&category=RN%2FRegistered%20Nurse) | Nov 18 2026 5:59 AM | 0 | via browser |
+| ✅ | [Baylor Scott & White Health — bsw-students-graduates](https://jobs.bswhealth.com/us/en/students-graduates) | Nov 18 2026 2:40 PM | 6 | via http · says open |
+| ✅ | [Baylor Scott & White Health — bsw-search-residency](https://jobs.bswhealth.com/us/en/search-results?keywords=graduate%20nurse%20residency) | Nov 18 2026 2:40 PM | 0 | via browser |
+| ✅ | [Cook Children's — cook-nurse-residency](https://cookchildrens.org/healthcare-professionals/nursing/nurse-residency-program) | Nov 18 2026 2:40 PM | 5 | via http · says open |
+| ✅ | [JPS Health Network — jps-nurse-residency](https://jpshealthnet.org/node/1188) | Nov 18 2026 2:40 PM | 0 | via http · says open |
+| ✅ | [JPS Health Network — jps-nurse-residency-application](https://jpshealthnet.org/node/1241) | Nov 18 2026 2:40 PM | 8 | via http · says open |
+| ✅ | [Job aggregators (all DFW) — dejobs-dallas](https://dejobs.org/jobs/?q=nurse+residency&location=Dallas%2C+TX&sort=date) | Nov 18 2026 2:40 PM | 1 | via browser |
+| ✅ | [Job aggregators (all DFW) — dejobs-fort-worth](https://dejobs.org/jobs/?q=nurse+residency&location=Fort+Worth%2C+TX&sort=date) | Nov 18 2026 2:40 PM | 1 | via browser |
+| ✅ | [Job aggregators (all DFW) — dejobs-new-grad-texas](https://dejobs.org/jobs/?q=new+grad+residency&location=Texas&sort=date) | Nov 18 2026 2:40 PM | 6 | via browser |
+| ✅ | [Medical City Healthcare (HCA) — hca-dejobs-new-grad](https://hcahealthcare.dejobs.org/jobs/?q=new+grad&location=Texas&sort=date) | Nov 18 2026 2:40 PM | 8 | via browser |
+| ✅ | [Methodist Health System — methodist-nurse-residency](https://www.methodisthealthsystem.org/careers/nurse-residency) | Nov 18 2026 2:40 PM | 1 | via http |
+| ✅ | [Texas Health Resources — thr-gn-residency-search](https://jobs.texashealth.org/listjobs/?keyword=(GN%20OR%20%22Graduate%20Nurse%22)%20AND%20Residency&category=RN%2FRegistered%20Nurse) | Nov 18 2026 2:40 PM | 0 | via browser |
 | ❌ | [AdventHealth — adventhealth-workday](https://adventhealth.wd12.myworkdayjobs.com/en-US/AH_External_Career_Site) | Nov 18 2026 5:59 AM |  | HTTP 429 · failing 1× in a row |
 | ✅ | [Children's Health — childrens-nurse-residency](https://www.childrens.com/for-healthcare-professionals/education-training/nurse-residency) | Nov 18 2026 5:59 AM | 1 | via http · says open |
 | ✅ | [Parkland Health — parkland-bridge-program](https://www.parklandhealth.org/the-bridge-nurse-residency-program) | Nov 18 2026 5:59 AM | 0 | via http · says open |
 | ✅ | [Parkland Health — parkland-workday](https://wd12.myworkdaysite.com/en-US/recruiting/parklandhospital/Parkland_Careers) | Nov 18 2026 5:59 AM | 0 | via api |
 | ✅ | [UT Southwestern Medical Center — utsw-nursing-residency](https://jobs.utsouthwestern.edu/nursing-residency/) | Nov 18 2026 5:59 AM | 10 | via http |
-| ✅ | [VA North Texas Health Care System — va-pbrnr](https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/) | Nov 17 2026 10:13 AM | 0 | via http |
-| ✅ | [VA North Texas Health Care System — usajobs-nurse-residency-dallas](https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas) | Nov 17 2026 10:13 AM | 0 | via browser |
+| ✅ | [VA North Texas Health Care System — va-pbrnr](https://www.va.gov/north-texas-health-care/work-with-us/internships-and-fellowships/post-baccalaureate-registered-nurse-residency-program/) | Nov 18 2026 2:40 PM | 0 | via http |
+| ✅ | [VA North Texas Health Care System — usajobs-nurse-residency-dallas](https://www.usajobs.gov/search/results/?k=nurse%20residency&l=Dallas%2C%20Texas) | Nov 18 2026 2:40 PM | 0 | via browser |
 
-_Generated Nov 18 2026 6:00 AM Central._
+_Generated Nov 18 2026 2:41 PM Central._
